@@ -1,0 +1,6 @@
+2026-07-10 07:31:36 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/1/validate | user=testing@gmail.com | msg=Request sent
+2026-07-10 07:32:12 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/1/validate | user=testing@gmail.com | msg=Request sent
+2026-07-10 07:32:20 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=testing@gmail.com | msg=Request sent
+2026-07-10 07:32:20 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=95.2ms | user=testing@gmail.com | msg=Response received
+2026-07-10 07:32:33 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/1 | user=testing@gmail.com | msg=Request sent
+2026-07-10 07:32:33 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/1 | status=200 | duration=123.1ms | user=testing@gmail.com | msg=Response received
