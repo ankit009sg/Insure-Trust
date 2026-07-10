@@ -1,19 +1,15 @@
 import React from 'react';
-import { Sparkles, AlertOctagon, CheckCircle2, ShieldAlert } from 'lucide-react';
+import { Sparkles, AlertOctagon, CheckCircle2, ShieldAlert, AlertTriangle } from 'lucide-react';
 import { Application } from '../../types';
 
 interface RiskCardProps {
   application: Application;
   isApplicant?: boolean;
-  onSubmit?: () => void;
-  isSubmitting?: boolean;
 }
 
 export const RiskCard: React.FC<RiskCardProps> = ({
   application,
   isApplicant = false,
-  onSubmit,
-  isSubmitting = false,
 }) => {
   const { risk_rating = 'low', summary = '', status } = application;
 
@@ -21,6 +17,10 @@ export const RiskCard: React.FC<RiskCardProps> = ({
   const flagCount = Object.values(application.extracted_data).reduce(
     (acc, field) => acc + (field.flags ? field.flags.length : 0),
     0
+  );
+
+  const flagFields = Object.entries(application.extracted_data).filter(
+    ([_, field]) => field.flags && field.flags.length > 0
   );
 
   const getRiskStyles = (rating: string) => {
@@ -40,7 +40,7 @@ export const RiskCard: React.FC<RiskCardProps> = ({
           iconColor: 'text-amber-400',
         };
       case 'low':
-        default:
+      default:
         return {
           pill: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
           bg: 'from-emerald-500/10 to-transparent border-emerald-500/10',
@@ -88,7 +88,7 @@ export const RiskCard: React.FC<RiskCardProps> = ({
                 <ShieldAlert className="h-4.5 w-4.5 shrink-0 text-amber-400 mt-0.5" />
                 <div>
                   <span className="font-semibold block mb-0.5">Underwriting Flags Restricting Submission</span>
-                  Edit the highlighted risk fields above to resolve the warnings. The submit button is disabled until zero flags remain.
+                  Please resolve the highlighted risk fields below to enable submission.
                 </div>
               </div>
             ) : (
@@ -104,6 +104,53 @@ export const RiskCard: React.FC<RiskCardProps> = ({
         )}
       </div>
 
+      {/* Validation Checks Summary & Errors */}
+      <div className="glass-panel p-5 border-slate-800/80 space-y-4">
+        <div className="flex items-center gap-2 border-b border-slate-850 pb-2">
+          <AlertTriangle className="h-4 w-4 text-brand-400" />
+          <h4 className="text-sm font-semibold tracking-wide text-slate-200 uppercase">
+            Validation Check Summary
+          </h4>
+        </div>
+
+        {flagFields.length > 0 ? (
+          <div className="space-y-2.5 max-h-[220px] overflow-y-auto pr-1">
+            {flagFields.map(([key, field]) => {
+              const activeFlag = field.flags[0];
+              const isHigh = activeFlag.severity.toLowerCase() === 'high';
+              return (
+                <div
+                  key={key}
+                  className={`p-3.5 rounded-xl border text-xs flex gap-3 transition-all ${
+                    isHigh
+                      ? 'bg-red-500/5 border-red-500/10 text-red-300'
+                      : 'bg-amber-500/5 border-amber-500/10 text-amber-300'
+                  }`}
+                >
+                  <AlertOctagon className={`h-4.5 w-4.5 shrink-0 mt-0.5 ${isHigh ? 'text-red-400' : 'text-amber-400'}`} />
+                  <div>
+                    <span className="font-bold block text-slate-150 mb-0.5">{field.label}</span>
+                    <span className="leading-relaxed text-slate-400">{activeFlag.message}</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="text-center py-4 flex flex-col items-center gap-2">
+            <div className="p-3 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              <CheckCircle2 className="h-6 w-6" />
+            </div>
+            <div className="space-y-0.5">
+              <h5 className="text-xs font-bold text-slate-200 uppercase tracking-wide">All Checks Cleared</h5>
+              <p className="text-[11px] text-slate-400 max-w-[220px] mx-auto leading-relaxed">
+                This application meets all basic life insurance intake criteria.
+              </p>
+            </div>
+          </div>
+        )}
+      </div>
+
       {/* AI Plain-Language Summary */}
       <div className="glass-panel p-6 border-slate-800/80 relative overflow-hidden">
         {/* Decorative subtle pulse glow */}
@@ -114,39 +161,14 @@ export const RiskCard: React.FC<RiskCardProps> = ({
             <Sparkles className="h-4 w-4" />
           </div>
           <h4 className="text-sm font-semibold tracking-wide text-slate-200 uppercase">
-            AI Plain-Language Summary
+            AI Underwriting Assessment
           </h4>
         </div>
 
-        <div className="text-sm text-slate-300 leading-relaxed whitespace-pre-wrap">
+        <div className="text-sm text-slate-350 leading-relaxed whitespace-pre-wrap">
           {summary || 'Analyst model generating underwriting profile summary...'}
         </div>
       </div>
-
-      {/* Applicant Submit Button */}
-      {isApplicant && status === 'draft' && onSubmit && (
-        <button
-          onClick={onSubmit}
-          disabled={flagCount > 0 || isSubmitting}
-          className={`w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-semibold text-sm transition-all duration-200 ${
-            flagCount > 0
-              ? 'bg-slate-900 border border-slate-850 text-slate-500 cursor-not-allowed'
-              : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/10 hover:shadow-emerald-600/20 active:scale-98'
-          }`}
-        >
-          {isSubmitting ? (
-            <>
-              <div className="h-4 w-4 rounded-full border-2 border-white/20 border-t-white animate-spin"></div>
-              <span>Submitting Application...</span>
-            </>
-          ) : (
-            <>
-              <CheckCircle2 className="h-4 w-4" />
-              <span>Submit Application to Review</span>
-            </>
-          )}
-        </button>
-      )}
     </div>
   );
 };

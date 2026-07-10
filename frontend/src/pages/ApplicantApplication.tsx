@@ -1,8 +1,9 @@
 import React from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { useApplication, useValidateApplication, useSubmitApplication } from '../hooks/useApplications';
+import { useApplication, useValidateApplication, useSubmitApplication, useDeleteApplication } from '../hooks/useApplications';
 import { ExtractionForm } from '../components/application/ExtractionForm';
 import { RiskCard } from '../components/application/RiskCard';
+import { PDFViewer } from '../components/application/PDFViewer';
 import { Loading } from '../components/common/Loading';
 import { ErrorPage } from '../components/common/ErrorPage';
 import { ArrowLeft, Clock, FileText, CheckCircle2, XCircle, AlertTriangle, ShieldCheck } from 'lucide-react';
@@ -15,6 +16,7 @@ export const ApplicantApplication: React.FC = () => {
   const { data: application, isLoading, isError, refetch } = useApplication(appId);
   const validateMutation = useValidateApplication();
   const submitMutation = useSubmitApplication();
+  const deleteMutation = useDeleteApplication();
 
   const handleSave = async (updatedFields: Record<string, any>) => {
     try {
@@ -34,6 +36,17 @@ export const ApplicantApplication: React.FC = () => {
       refetch();
     } catch (err) {
       console.error("Submission failed", err);
+    }
+  };
+
+  const handleDeleteApplication = async () => {
+    if (window.confirm("Are you sure you want to delete this application? This action cannot be undone and the file will be removed.")) {
+      try {
+        await deleteMutation.mutateAsync(appId);
+        navigate('/dashboard');
+      } catch (err) {
+        console.error("Deletion failed", err);
+      }
     }
   };
 
@@ -84,70 +97,14 @@ export const ApplicantApplication: React.FC = () => {
         </div>
       </div>
 
-      {/* Main Split Screen */}
+      {/* Top Split View: PDF on Left, AI Assessment on Right */}
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
-        {/* Left Side: Extraction Form (3 columns) */}
-        <div className="lg:col-span-3 space-y-6">
-          <div className="glass-panel p-6 border-slate-800/80">
-            <div className="flex items-center justify-between border-b border-slate-855 pb-4 mb-6">
-              <div className="space-y-1">
-                <h3 className="text-base font-semibold text-slate-200">
-                  {status === 'draft' ? 'Validate Extracted Parameters' : 'Intake Parameters'}
-                </h3>
-                <p className="text-xs text-slate-400">
-                  {status === 'draft' 
-                    ? 'Verify AI-extracted parameters. Fields marked with flags require corrections.' 
-                    : 'Read-only record of parameters submitted for underwriting.'}
-                </p>
-              </div>
-            </div>
-
-            {status === 'draft' ? (
-              <ExtractionForm
-                application={application}
-                onSave={handleSave}
-                isSaving={validateMutation.isPending}
-              />
-            ) : (
-              // Read-only parameters listing
-              <div className="space-y-4">
-                {Object.entries(application.extracted_data).map(([key, field]) => {
-                  const hasFlags = field.flags && field.flags.length > 0;
-                  return (
-                    <div 
-                      key={key} 
-                      className={`flex flex-col md:flex-row md:items-center justify-between p-4 rounded-xl border border-slate-900/60 bg-slate-900/10 gap-3`}
-                    >
-                      <div className="space-y-0.5">
-                        <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider block">
-                          {field.label}
-                        </span>
-                        <span className="text-sm font-semibold text-slate-200">
-                          {field.value || <span className="text-slate-600 italic">None / Blank</span>}
-                        </span>
-                      </div>
-                      
-                      {/* Check if flag exists in historical data (shouldn't if submitted, but for display) */}
-                      {hasFlags ? (
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-red-500/10 text-red-400 border border-red-500/20 rounded-full text-[10px] font-bold uppercase tracking-wide">
-                          <AlertTriangle className="h-3.5 w-3.5" />
-                          <span>Flagged</span>
-                        </div>
-                      ) : (
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-slate-900/80 text-slate-400 border border-slate-800 rounded-full text-[10px] font-bold uppercase tracking-wide">
-                          <ShieldCheck className="h-3.5 w-3.5 text-emerald-500" />
-                          <span>Verified</span>
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </div>
+        {/* Left Side: Uploaded PDF (3 columns) */}
+        <div className="lg:col-span-3">
+          <PDFViewer applicationId={application.id} />
         </div>
 
-        {/* Right Side: Risk Card and Decision Status (2 columns) */}
+        {/* Right Side: AI Risk assessment & Decision status (2 columns) */}
         <div className="lg:col-span-2 space-y-6">
           {/* Decision Status Box (If not Draft) */}
           {status !== 'draft' && (
@@ -194,14 +151,73 @@ export const ApplicantApplication: React.FC = () => {
             </div>
           )}
 
-          {/* AI Risk Card / Summary */}
           <RiskCard
             application={application}
             isApplicant={true}
-            onSubmit={handleSubmitApplication}
-            isSubmitting={submitMutation.isPending}
           />
         </div>
+      </div>
+
+      {/* Bottom Section: Form fields (Editable if draft, read-only list if not) */}
+      <div className="glass-panel p-6 border-slate-800/80 mt-8">
+        <div className="flex items-center justify-between border-b border-slate-855 pb-4 mb-6">
+          <div className="space-y-1">
+            <h3 className="text-base font-semibold text-slate-200">
+              {status === 'draft' ? 'Edit & Verify Application Parameters' : 'Intake Parameters'}
+            </h3>
+            <p className="text-xs text-slate-400">
+              {status === 'draft' 
+                ? 'Correct the AI-extracted fields where validation failed. Click Save to revalidate, or Submit once all flags are resolved.' 
+                : 'Read-only record of parameters submitted for underwriting.'}
+            </p>
+          </div>
+        </div>
+
+        {status === 'draft' ? (
+          <ExtractionForm
+            application={application}
+            onSave={handleSave}
+            isSaving={validateMutation.isPending}
+            onDelete={handleDeleteApplication}
+            isDeleting={deleteMutation.isPending}
+            onSubmitApp={handleSubmitApplication}
+            isSubmitting={submitMutation.isPending}
+          />
+        ) : (
+          // Read-only parameters listing spanning full width (arranged nicely in grid)
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {Object.entries(application.extracted_data).map(([key, field]) => {
+              const hasFlags = field.flags && field.flags.length > 0;
+              return (
+                <div 
+                  key={key} 
+                  className="flex items-center justify-between p-4 rounded-xl border border-slate-900 bg-slate-900/10 hover:border-slate-800/60 transition-colors gap-3"
+                >
+                  <div className="space-y-0.5">
+                    <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider block">
+                      {field.label}
+                    </span>
+                    <span className="text-sm font-semibold text-slate-200">
+                      {field.value || <span className="text-slate-600 italic">None / Blank</span>}
+                    </span>
+                  </div>
+                  
+                  {hasFlags ? (
+                    <div className="flex items-center gap-1.5 px-2.5 py-1 bg-red-500/10 text-red-400 border border-red-500/20 rounded-full text-[10px] font-bold uppercase tracking-wide">
+                      <AlertTriangle className="h-3.5 w-3.5" />
+                      <span>Flagged</span>
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-1.5 px-2.5 py-1 bg-slate-900/85 text-slate-400 border border-slate-800 rounded-full text-[10px] font-bold uppercase tracking-wide">
+                      <ShieldCheck className="h-3.5 w-3.5 text-emerald-500" />
+                      <span>Verified</span>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </div>
   );

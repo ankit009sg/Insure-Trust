@@ -43,4 +43,8 @@ export const applicationsApi = {
     });
     return response.data;
   },
+
+  async delete(id: number): Promise<void> {
+    await apiClient.delete(`/api/v1/applications/${id}`);
+  },
 };

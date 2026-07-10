@@ -48,8 +48,13 @@ class ApplicationCreate(BaseModel):
     summary: Optional[str] = None
     risk_rating: Optional[str] = "low"
 
+class ApplicationFieldUpdate(BaseModel):
+    """A partial field update — only value and original_value are required from the client."""
+    value: Any
+    original_value: Any
+
 class ApplicationUpdate(BaseModel):
-    extracted_data: Dict[str, ExtractedFieldSchema]
+    extracted_data: Dict[str, ApplicationFieldUpdate]
 
 class ApplicationAction(BaseModel):
     action: str  # "approve", "reject", "escalate"

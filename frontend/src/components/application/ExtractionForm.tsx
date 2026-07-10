@@ -1,18 +1,26 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { ExtractedField, Application } from '../../types';
-import { AlertTriangle, ShieldCheck, Check } from 'lucide-react';
+import { AlertTriangle, ShieldCheck, Check, Trash2, Save, CheckCircle2 } from 'lucide-react';
 
 interface ExtractionFormProps {
   application: Application;
   onSave: (data: Record<string, any>) => void;
   isSaving: boolean;
+  onDelete: () => void;
+  isDeleting: boolean;
+  onSubmitApp: () => void;
+  isSubmitting: boolean;
 }
 
 export const ExtractionForm: React.FC<ExtractionFormProps> = ({
   application,
   onSave,
   isSaving,
+  onDelete,
+  isDeleting,
+  onSubmitApp,
+  isSubmitting,
 }) => {
   // Setup react-hook-form
   const { register, handleSubmit, reset } = useForm({
@@ -49,6 +57,12 @@ export const ExtractionForm: React.FC<ExtractionFormProps> = ({
     }, {});
     onSave(updates);
   };
+
+  // Compute current flag count from the live application data
+  const flagCount = Object.values(application.extracted_data).reduce(
+    (acc, field) => acc + (field.flags ? field.flags.length : 0),
+    0
+  );
 
   const getSeverityStyles = (severity: string) => {
     switch (severity.toLowerCase()) {
@@ -187,24 +201,61 @@ export const ExtractionForm: React.FC<ExtractionFormProps> = ({
         {renderField('family_history', 'text')}
       </div>
 
-      <div className="pt-4 border-t border-slate-800 flex justify-end">
+      <div className="pt-6 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+        {/* Delete button on the left */}
         <button
-          type="submit"
-          disabled={isSaving}
-          className="flex items-center gap-2 bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-500 hover:to-brand-400 text-white font-medium px-6 py-3 rounded-xl shadow-lg shadow-brand-500/10 hover:shadow-brand-500/20 active:scale-98 transition-all disabled:opacity-50 text-sm"
+          type="button"
+          onClick={onDelete}
+          disabled={isDeleting || isSaving}
+          className="w-full sm:w-auto flex items-center justify-center gap-2 border border-red-500/30 hover:border-red-500 bg-red-500/5 hover:bg-red-500/10 text-red-400 font-medium px-5 py-2.5 rounded-xl transition-all disabled:opacity-50 text-sm active:scale-98"
         >
-          {isSaving ? (
-            <>
-              <div className="h-4 w-4 rounded-full border-2 border-white/20 border-t-white animate-spin"></div>
-              <span>Revalidating fields...</span>
-            </>
-          ) : (
-            <>
-              <Check className="h-4 w-4" />
-              <span>Save & Revalidate</span>
-            </>
-          )}
+          <Trash2 className="h-4 w-4" />
+          <span>Delete Application</span>
         </button>
+
+        {/* Save and Submit on the right */}
+        <div className="w-full sm:w-auto flex flex-col sm:flex-row gap-3">
+          <button
+            type="submit"
+            disabled={isSaving || isDeleting}
+            className="w-full sm:w-auto flex items-center justify-center gap-2 border border-slate-700 bg-slate-800 hover:bg-slate-750 text-white font-medium px-5 py-2.5 rounded-xl transition-all disabled:opacity-50 text-sm active:scale-98"
+          >
+            {isSaving ? (
+              <>
+                <div className="h-4 w-4 rounded-full border-2 border-white/20 border-t-white animate-spin"></div>
+                <span>Saving...</span>
+              </>
+            ) : (
+              <>
+                <Save className="h-4 w-4 text-slate-400" />
+                <span>Save Progress</span>
+              </>
+            )}
+          </button>
+
+          <button
+            type="button"
+            onClick={onSubmitApp}
+            disabled={flagCount > 0 || isSubmitting || isSaving || isDeleting}
+            className={`w-full sm:w-auto flex items-center justify-center gap-2 font-medium px-6 py-2.5 rounded-xl text-sm transition-all duration-200 active:scale-98 ${
+              flagCount > 0
+                ? 'bg-slate-900 border border-slate-850 text-slate-500 cursor-not-allowed'
+                : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/10 hover:shadow-emerald-600/20'
+            }`}
+          >
+            {isSubmitting ? (
+              <>
+                <div className="h-4 w-4 rounded-full border-2 border-white/20 border-t-white animate-spin"></div>
+                <span>Submitting...</span>
+              </>
+            ) : (
+              <>
+                <CheckCircle2 className="h-4 w-4" />
+                <span>Submit Application</span>
+              </>
+            )}
+          </button>
+        </div>
       </div>
     </form>
   );

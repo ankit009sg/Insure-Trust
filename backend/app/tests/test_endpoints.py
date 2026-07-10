@@ -32,8 +32,12 @@ def setup_db():
     Base.metadata.create_all(bind=engine)
     yield
     Base.metadata.drop_all(bind=engine)
+    engine.dispose()
     if os.path.exists("./test_insureverify.db"):
-        os.remove("./test_insureverify.db")
+        try:
+            os.remove("./test_insureverify.db")
+        except PermissionError:
+            pass
 
 def test_user_registration_and_login():
     # 1. Register User
@@ -106,6 +110,8 @@ def test_application_upload_and_validation():
     updated_fields["pre_existing_conditions"]["value"] = "None"
     updated_fields["occupation"]["value"] = "Software Engineer"
     updated_fields["coverage_amount"]["value"] = "500000"
+    # Also resolve alcohol flag since it prevents submission
+    updated_fields["alcohol_consumption"]["value"] = "None"
 
     validate_res = client.put(
         f"/api/v1/applications/{app_id}/validate",
@@ -117,5 +123,40 @@ def test_application_upload_and_validation():
 
     # Submit application
     submit_res = client.post(f"/api/v1/applications/{app_id}/submit", headers=headers)
+    if submit_res.status_code != 200:
+        print(f"Submit failed body: {submit_res.json()}")
     assert submit_res.status_code == 200
     assert submit_res.json()["status"] == "pending"
+
+def test_get_application_pdf_and_delete():
+    # Register & Login Applicant
+    client.post(
+        "/api/v1/auth/register",
+        json={"email": "pdf_user@insureverify.com", "password": "password123", "role": "applicant"}
+    )
+    login_res = client.post(
+        "/api/v1/auth/login",
+        data={"username": "pdf_user@insureverify.com", "password": "password123"}
+    )
+    token = login_res.json()["access_token"]
+    headers = {"Authorization": f"Bearer {token}"}
+
+    # Upload mock file
+    file_content = b"%PDF-1.4 mock pdf structure"
+    files = {"file": ("application.pdf", file_content, "application/pdf")}
+    upload_res = client.post("/api/v1/applications/upload", files=files, headers=headers)
+    assert upload_res.status_code == 200
+    app_id = upload_res.json() ["id"]
+
+    # 1. Fetch PDF
+    pdf_res = client.get(f"/api/v1/applications/{app_id}/pdf", headers=headers)
+    assert pdf_res.status_code == 200
+    assert pdf_res.headers["content-type"] == "application/pdf"
+
+    # 2. Delete Application
+    delete_res = client.delete(f"/api/v1/applications/{app_id}", headers=headers)
+    assert delete_res.status_code == 204
+
+    # 3. Check PDF and Application details are gone/404
+    get_res = client.get(f"/api/v1/applications/{app_id}", headers=headers)
+    assert get_res.status_code == 404

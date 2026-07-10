@@ -1,7 +1,69 @@
 import re
+import os
 import fitz  # PyMuPDF
 from typing import Dict, Any, Tuple, List
+from groq import Groq
 from backend.app.schemas.schemas import ExtractedFieldSchema, FlagSchema
+from backend.app.core.logger import get_backend_logger
+
+logger = get_backend_logger()
+
+def generate_groq_summary(fields: Dict[str, Any], risk_rating: str, flags_count: int, all_flags_messages: List[str]) -> str:
+    """Generates an underwriting summary using Groq's Llama 3 model."""
+    groq_api_key = os.getenv("GROQ_API_KEY")
+    if not groq_api_key:
+        logger.warning(
+            "GROQ_API_KEY is not set in environment / .env file. "
+            "AI summary generation is disabled. Falling back to rule-based summary."
+        )
+        return ""
+
+    try:
+        client = Groq(api_key=groq_api_key)
+
+        # Build prompt
+        prompt = (
+            f"You are an AI Underwriting Intake assistant for a life insurance platform named 'InsureVerify'.\n"
+            f"Analyze the following extracted applicant fields and their validation checks to write a concise, professional plain-language summary for the underwriter.\n\n"
+            f"Applicant Profile:\n"
+        )
+        for key, fd in fields.items():
+            val = fd.get("value", "")
+            label = fd.get("label", key)
+            prompt += f"- {label}: {val}\n"
+
+        prompt += f"\nRisk Assessment:\n"
+        prompt += f"- Overall Risk Rating: {risk_rating.upper()}\n"
+        prompt += f"- Flagged Warnings ({flags_count}):\n"
+        for msg in all_flags_messages:
+            prompt += f"  * {msg}\n"
+
+        prompt += (
+            f"\nProvide a professional, clear, paragraph-style underwriting summary. "
+            f"In your summary:\n"
+            f"1. Summarize the applicant's profile (name, age/DOB, gender, occupation) and coverage request.\n"
+            f"2. Highlight key risks (e.g. tobacco use, pre-existing conditions, high coverage amounts) and their health/underwriting implications.\n"
+            f"3. Advise on next steps (e.g. whether fields need to be resolved, or if manual policy manager review is needed).\n"
+            f"Keep it within 3-5 sentences, clean and direct. Do not include markdown headers or extra conversation."
+        )
+
+        completion = client.chat.completions.create(
+            model="llama-3.1-8b-instant",
+            messages=[
+                {"role": "system", "content": "You are an expert life insurance underwriter."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.3,
+            max_tokens=300
+        )
+        summary = completion.choices[0].message.content.strip()
+        logger.info(f"Groq AI summary generated successfully (risk={risk_rating}, flags={flags_count})")
+        return summary
+
+    except Exception as e:
+        logger.error(f"Groq API call failed — falling back to rule-based summary. Error: {e}", exc_info=True)
+        return ""
+
 
 def extract_text_from_pdf(file_path: str) -> str:
     """Extracts plain text from a PDF file using PyMuPDF."""
@@ -12,7 +74,7 @@ def extract_text_from_pdf(file_path: str) -> str:
             text += page.get_text()
         doc.close()
     except Exception as e:
-        print(f"Error extracting text from PDF: {e}")
+        logger.error(f"Error extracting text from PDF '{file_path}': {e}", exc_info=True)
     return text
 
 def parse_extracted_text(text: str) -> Dict[str, Any]:
@@ -191,24 +253,32 @@ def run_validation_rules(fields: Dict[str, Any]) -> Tuple[Dict[str, ExtractedFie
 
     # 5. Generate AI summary
     name_str = updated_fields["full_name"]["value"] or "Unnamed Applicant"
-    if not all_flags:
-        summary = (
-            f"AI Underwriting Review for {name_str}: All standard criteria met. "
-            "No high, medium, or low risk flags were identified in the application fields. "
-            "Applicant presents a clean underwriting profile. Recommended for expedited automated approval."
-        )
+    all_flags_messages = []
+    for fk, fd in updated_fields.items():
+        for flg in fd["flags"]:
+            all_flags_messages.append(f"{fd['label']}: {flg['message']}")
+
+    # Try calling Groq API
+    groq_summary = generate_groq_summary(updated_fields, risk_rating, len(all_flags), all_flags_messages)
+    
+    if groq_summary:
+        summary = groq_summary
     else:
-        summary_bullets = []
-        for fk, fd in updated_fields.items():
-            for flg in fd["flags"]:
-                summary_bullets.append(f"- {fd['label']}: {flg['message']}")
-        
-        summary = (
-            f"AI Underwriting Review for {name_str}:\n"
-            f"Application classified with **{risk_rating.upper()}** risk rating based on {len(all_flags)} active flag(s).\n\n"
-            "Key Underwriting Concerns:\n" + "\n".join(summary_bullets) + "\n\n"
-            "Action required: Applicant must edit and verify flagged fields or Policy Manager must review detailed clinical records."
-        )
+        # Fallback to local rule-based generation
+        if not all_flags:
+            summary = (
+                f"AI Underwriting Review for {name_str}: All standard criteria met. "
+                "No high, medium, or low risk flags were identified in the application fields. "
+                "Applicant presents a clean underwriting profile. Recommended for expedited automated approval."
+            )
+        else:
+            summary_bullets = [f"- {msg}" for msg in all_flags_messages]
+            summary = (
+                f"AI Underwriting Review for {name_str}:\n"
+                f"Application classified with **{risk_rating.upper()}** risk rating based on {len(all_flags)} active flag(s).\n\n"
+                "Key Underwriting Concerns:\n" + "\n".join(summary_bullets) + "\n\n"
+                "Action required: Applicant must edit and verify flagged fields or Policy Manager must review detailed clinical records."
+            )
 
     # Transform flags list into list of FlagSchema Pydantic objects or dicts
     final_fields = {}

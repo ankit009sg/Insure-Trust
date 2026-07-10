@@ -60,3 +60,13 @@ export const useReviewAction = () => {
     },
   });
 };
+
+export const useDeleteApplication = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (id: number) => applicationsApi.delete(id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['applications'] });
+    },
+  });
+};

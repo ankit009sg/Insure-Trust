@@ -4,3 +4,195 @@
 2026-07-10 07:32:20 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=95.2ms | user=testing@gmail.com | msg=Response received
 2026-07-10 07:32:33 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/1 | user=testing@gmail.com | msg=Request sent
 2026-07-10 07:32:33 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/1 | status=200 | duration=123.1ms | user=testing@gmail.com | msg=Response received
+2026-07-10 08:08:58 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-10 08:08:58 | WARNING  | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=401 | duration=92.9ms | msg=Incorrect email or password | error=Request failed with status code 401
+2026-07-10 08:09:12 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/register | msg=Request sent
+2026-07-10 08:09:12 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/register | status=201 | duration=341.7ms | msg=Response received
+2026-07-10 08:09:26 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-10 08:09:27 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=302.8ms | msg=Response received
+2026-07-10 08:09:27 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:09:27 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=23.8ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:09:31 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/upload | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:09:31 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/upload | status=200 | duration=124.9ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:09:31 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:09:31 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:09:31 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=29.2ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:09:31 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=31.2ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:09:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:09:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=17.7ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:09:39 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:09:39 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=14.3ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:09:40 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:09:40 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=15.2ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:09:41 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:09:41 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=17.2ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:09:42 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:09:42 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=16.6ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:09:43 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:09:43 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=15.8ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:10:44 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:10:44 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:10:44 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:10:44 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=22.0ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:10:44 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | status=200 | duration=24.7ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:10:44 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | status=200 | duration=22.8ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:36:40 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-10 08:36:41 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=868.8ms | msg=Response received
+2026-07-10 08:36:41 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:36:41 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=117.8ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:36:45 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:36:45 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=70.3ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:36:48 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:36:48 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:36:48 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | status=200 | duration=2480.1ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:36:48 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | status=200 | duration=2480.3ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:36:50 | INFO     | FRONTEND | DELETE http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:36:51 | INFO     | FRONTEND | DELETE http://127.0.0.1:8000/api/v1/applications/2 | status=204 | duration=401.2ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:36:51 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:36:51 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=91.8ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:36:55 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/upload | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:36:56 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:36:56 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/upload | status=200 | duration=244.0ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:36:56 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:36:56 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:36:56 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:36:56 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | status=200 | duration=20.2ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:36:56 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | status=200 | duration=18.4ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:36:56 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=327.7ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:36:56 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=308.5ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:42:26 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:42:26 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=267.9ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:42:26 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:42:26 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:42:26 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | status=200 | duration=78.9ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:42:27 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | status=200 | duration=79.1ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:46:48 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:46:48 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=176.2ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:46:48 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:46:48 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:46:48 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | status=200 | duration=82.8ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:46:48 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | status=200 | duration=83.7ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:46:53 | INFO     | FRONTEND | DELETE http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:46:54 | INFO     | FRONTEND | DELETE http://127.0.0.1:8000/api/v1/applications/2 | status=204 | duration=420.9ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:46:54 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:46:54 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=194.9ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:46:57 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/upload | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:46:58 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/upload | status=200 | duration=146.6ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:46:58 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:46:58 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | status=200 | duration=16.4ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:46:58 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:46:58 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:46:58 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:46:58 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | status=200 | duration=17.1ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:46:58 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=374.9ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:46:58 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=347.8ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:47:38 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/2/validate | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:47:38 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/2/validate | status=200 | duration=501.6ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:47:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:47:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=72.1ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:49:52 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/2/validate | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:49:52 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/2/validate | status=200 | duration=454.1ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:49:52 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:49:52 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/2/validate | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:49:54 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=1163.3ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:49:54 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/2/validate | status=200 | duration=1531.2ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:49:54 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:49:54 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=312.0ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:51:03 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/2/validate | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:51:03 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/2/validate | status=200 | duration=365.4ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:51:03 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:51:03 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=519.4ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:51:25 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/2/validate | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:51:25 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/2/validate | status=200 | duration=139.3ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:51:25 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:51:25 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=360.4ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:52:25 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/2/validate | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:52:25 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/2/validate | status=200 | duration=328.4ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:52:25 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:52:25 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=57.3ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:53:59 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/2/validate | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:53:59 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/2/validate | status=200 | duration=493.4ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:53:59 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:53:59 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=97.3ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:55:53 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:55:54 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=370.6ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:55:54 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:55:54 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:55:54 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | status=200 | duration=195.8ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:55:54 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | status=200 | duration=196.6ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:55:59 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/2/validate | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:56:01 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/2/validate | status=200 | duration=2367.7ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:56:01 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:56:01 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=313.3ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:59:32 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/2/validate | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:59:35 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 08:59:35 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/2/validate | status=200 | duration=3146.6ms | user=aman@gmail.com | msg=Response received
+2026-07-10 08:59:35 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=184.3ms | user=aman@gmail.com | msg=Response received
+2026-07-10 09:00:40 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/2/validate | user=aman@gmail.com | msg=Request sent
+2026-07-10 09:00:43 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 09:00:43 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/2/validate | status=200 | duration=2357.0ms | user=aman@gmail.com | msg=Response received
+2026-07-10 09:00:43 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=558.6ms | user=aman@gmail.com | msg=Response received
+2026-07-10 09:00:52 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/2/submit | user=aman@gmail.com | msg=Request sent
+2026-07-10 09:00:53 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/2/submit | status=200 | duration=140.7ms | user=aman@gmail.com | msg=Response received
+2026-07-10 09:00:53 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 09:00:53 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 09:00:53 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=114.3ms | user=aman@gmail.com | msg=Response received
+2026-07-10 09:00:53 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=151.6ms | user=aman@gmail.com | msg=Response received
+2026-07-10 09:01:05 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=aman@gmail.com | msg=Request sent
+2026-07-10 09:01:05 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=203.1ms | user=aman@gmail.com | msg=Response received
+2026-07-10 09:01:09 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 09:01:09 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | user=aman@gmail.com | msg=Request sent
+2026-07-10 09:01:09 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | user=aman@gmail.com | msg=Request sent
+2026-07-10 09:01:09 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | status=200 | duration=161.6ms | user=aman@gmail.com | msg=Response received
+2026-07-10 09:01:09 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | status=200 | duration=160.7ms | user=aman@gmail.com | msg=Response received
+2026-07-10 09:01:09 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=301.1ms | user=aman@gmail.com | msg=Response received
+2026-07-10 09:01:14 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=aman@gmail.com | msg=Request sent
+2026-07-10 09:01:14 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=165.7ms | user=aman@gmail.com | msg=Response received
+2026-07-10 09:01:39 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/register | msg=Request sent
+2026-07-10 09:01:39 | WARNING  | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/register | status=400 | duration=85.0ms | msg=Email already registered. | error=Request failed with status code 400
+2026-07-10 09:01:47 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/register | msg=Request sent
+2026-07-10 09:01:48 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/register | status=201 | duration=791.3ms | msg=Response received
+2026-07-10 09:02:01 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-10 09:02:02 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=630.5ms | msg=Response received
+2026-07-10 09:02:02 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=arun@gmail.com | msg=Request sent
+2026-07-10 09:02:02 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=174.9ms | user=arun@gmail.com | msg=Response received
+2026-07-10 09:02:10 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=arun@gmail.com | msg=Request sent
+2026-07-10 09:02:10 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=73.2ms | user=arun@gmail.com | msg=Response received
+2026-07-10 09:03:07 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/2/action | user=arun@gmail.com | msg=Request sent
+2026-07-10 09:03:08 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/2/action | status=200 | duration=184.4ms | user=arun@gmail.com | msg=Response received
+2026-07-10 09:03:08 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=arun@gmail.com | msg=Request sent
+2026-07-10 09:03:08 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=arun@gmail.com | msg=Request sent
+2026-07-10 09:03:08 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=167.0ms | user=arun@gmail.com | msg=Response received
+2026-07-10 09:03:08 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=196.5ms | user=arun@gmail.com | msg=Response received
+2026-07-10 09:03:12 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=arun@gmail.com | msg=Request sent
+2026-07-10 09:03:12 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=103.3ms | user=arun@gmail.com | msg=Response received
+2026-07-10 09:03:16 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=arun@gmail.com | msg=Request sent
+2026-07-10 09:03:16 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=71.3ms | user=arun@gmail.com | msg=Response received
+2026-07-10 09:03:18 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=arun@gmail.com | msg=Request sent
+2026-07-10 09:03:18 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=85.4ms | user=arun@gmail.com | msg=Response received
+2026-07-10 09:03:20 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=arun@gmail.com | msg=Request sent
+2026-07-10 09:03:20 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=43.1ms | user=arun@gmail.com | msg=Response received
+2026-07-10 09:03:22 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=arun@gmail.com | msg=Request sent
+2026-07-10 09:03:22 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=85.1ms | user=arun@gmail.com | msg=Response received
+2026-07-10 09:03:53 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/register | msg=Request sent
+2026-07-10 09:03:53 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/register | status=201 | duration=767.9ms | msg=Response received
+2026-07-10 09:04:06 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-10 09:04:07 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=744.5ms | msg=Response received
+2026-07-10 09:04:07 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=pawan@gmail.com | msg=Request sent
+2026-07-10 09:04:07 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=177.6ms | user=pawan@gmail.com | msg=Response received
+2026-07-10 09:04:16 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=pawan@gmail.com | msg=Request sent
+2026-07-10 09:04:16 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=56.3ms | user=pawan@gmail.com | msg=Response received
+2026-07-10 09:04:55 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/2/action | user=pawan@gmail.com | msg=Request sent
+2026-07-10 09:04:56 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/2/action | status=200 | duration=497.1ms | user=pawan@gmail.com | msg=Response received
+2026-07-10 09:04:56 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=pawan@gmail.com | msg=Request sent
+2026-07-10 09:04:56 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=pawan@gmail.com | msg=Request sent
+2026-07-10 09:04:56 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=112.5ms | user=pawan@gmail.com | msg=Response received
+2026-07-10 09:04:56 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=135.7ms | user=pawan@gmail.com | msg=Response received
+2026-07-10 09:05:08 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=aman@gmail.com | msg=Request sent
+2026-07-10 09:05:09 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=126.0ms | user=aman@gmail.com | msg=Response received
+2026-07-10 09:05:12 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 09:05:12 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=53.9ms | user=aman@gmail.com | msg=Response received
+2026-07-10 09:05:12 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | user=aman@gmail.com | msg=Request sent
+2026-07-10 09:05:12 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | user=aman@gmail.com | msg=Request sent
+2026-07-10 09:05:13 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | status=200 | duration=836.5ms | user=aman@gmail.com | msg=Response received
+2026-07-10 09:05:13 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | status=200 | duration=837.7ms | user=aman@gmail.com | msg=Response received

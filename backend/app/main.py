@@ -1,5 +1,12 @@
 import os
+from dotenv import load_dotenv
+
+# Load .env from project root before anything else
+_ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+load_dotenv(os.path.join(_ROOT_DIR, ".env"))
+
 from fastapi import FastAPI, Depends, HTTPException, status, UploadFile, File, Form
+from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
@@ -395,6 +402,71 @@ def review_action(
         + (f" reason={reason}" if reason else "")
     )
     return app_record
+
+
+@app.get("/api/v1/applications/{app_id}/pdf")
+def get_application_pdf(
+    app_id: int,
+    current_user: models.User = Depends(auth.get_current_user),
+    db: Session = Depends(get_db)
+):
+    app_record = db.query(models.Application).filter(models.Application.id == app_id).first()
+    if not app_record:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Application not found."
+        )
+        
+    # Authorization checks
+    if current_user.role == "applicant" and app_record.applicant_id != current_user.id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Access denied."
+        )
+        
+    if not app_record.file_path or not os.path.exists(app_record.file_path):
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="PDF file not found on server."
+        )
+        
+    return FileResponse(app_record.file_path, media_type="application/pdf")
+
+
+@app.delete("/api/v1/applications/{app_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_application(
+    app_id: int,
+    current_user: models.User = Depends(auth.RoleChecker(["applicant"])),
+    db: Session = Depends(get_db)
+):
+    app_record = db.query(models.Application).filter(
+        models.Application.id == app_id,
+        models.Application.applicant_id == current_user.id
+    ).first()
+    
+    if not app_record:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Application not found or unauthorized."
+        )
+        
+    if app_record.status != "draft":
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Cannot delete application once submitted."
+        )
+        
+    # Delete file from disk
+    if app_record.file_path and os.path.exists(app_record.file_path):
+        try:
+            os.remove(app_record.file_path)
+        except Exception as e:
+            logger.error(f"Failed to delete file {app_record.file_path}: {e}")
+            
+    db.delete(app_record)
+    db.commit()
+    logger.info(f"Application deleted | app_id={app_id} user={current_user.email}")
+    return
 
 
 @app.get("/")
