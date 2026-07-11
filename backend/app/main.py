@@ -303,16 +303,18 @@ def submit_application(
             detail="Application has already been submitted."
         )
         
-    # Count total flags remaining in extracted_data
-    flag_count = 0
+    # Count blocking flags remaining in extracted_data
+    blocking_flag_count = 0
     for field_key, field_data in app_record.extracted_data.items():
         flags = field_data.get("flags", [])
-        flag_count += len(flags)
+        for flag in flags:
+            if flag.get("blocking", True):
+                blocking_flag_count += 1
         
-    if flag_count > 0:
+    if blocking_flag_count > 0:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail=f"Cannot submit application. There are {flag_count} active warning flags remaining. Please resolve them."
+            detail=f"Cannot submit application. There are {blocking_flag_count} active blocking flags remaining. Please resolve them."
         )
         
     app_record.status = "pending"
@@ -401,6 +403,21 @@ def review_action(
         f" by={current_user.email} role={current_user.role}"
         + (f" reason={reason}" if reason else "")
     )
+
+    # Trigger email notification to the applicant if approved or rejected
+    if app_record.status in ["approved", "rejected"]:
+        try:
+            applicant_email = app_record.applicant.email if app_record.applicant else None
+            if applicant_email:
+                parser_service.send_email_notification(
+                    email=applicant_email,
+                    status=app_record.status,
+                    reason=reason or app_record.action_reason or "",
+                    case_id=app_record.id
+                )
+        except Exception as email_err:
+            logger.error(f"Failed to trigger email notification: {email_err}", exc_info=True)
+
     return app_record
 
 

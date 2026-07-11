@@ -196,3 +196,523 @@
 2026-07-10 09:05:12 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | user=aman@gmail.com | msg=Request sent
 2026-07-10 09:05:13 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | status=200 | duration=836.5ms | user=aman@gmail.com | msg=Response received
 2026-07-10 09:05:13 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | status=200 | duration=837.7ms | user=aman@gmail.com | msg=Response received
+2026-07-10 18:41:40 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-10 18:41:42 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=2266.9ms | msg=Response received
+2026-07-10 18:41:42 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=aman@gmail.com | msg=Request sent
+2026-07-10 18:41:42 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=110.0ms | user=aman@gmail.com | msg=Response received
+2026-07-10 18:42:06 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-10 18:42:06 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=558.5ms | msg=Response received
+2026-07-10 18:42:06 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=aman@gmail.com | msg=Request sent
+2026-07-10 18:42:07 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=61.6ms | user=aman@gmail.com | msg=Response received
+2026-07-10 18:42:17 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=aman@gmail.com | msg=Request sent
+2026-07-10 18:42:17 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=126.7ms | user=aman@gmail.com | msg=Response received
+2026-07-10 18:42:17 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | user=aman@gmail.com | msg=Request sent
+2026-07-10 18:42:17 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | user=aman@gmail.com | msg=Request sent
+2026-07-10 18:42:17 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | status=200 | duration=194.3ms | user=aman@gmail.com | msg=Response received
+2026-07-10 18:42:17 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2/pdf | status=200 | duration=196.6ms | user=aman@gmail.com | msg=Response received
+2026-07-10 18:43:09 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=aman@gmail.com | msg=Request sent
+2026-07-10 18:43:09 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=65.8ms | user=aman@gmail.com | msg=Response received
+2026-07-10 18:43:18 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-10 18:43:18 | WARNING  | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=401 | duration=54.0ms | msg=Incorrect email or password | error=Request failed with status code 401
+2026-07-10 18:43:18 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/register | msg=Request sent
+2026-07-10 18:43:19 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/register | status=201 | duration=649.9ms | msg=Response received
+2026-07-10 18:43:19 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-10 18:43:19 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=602.8ms | msg=Response received
+2026-07-10 18:43:19 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=policy@insureverify.com | msg=Request sent
+2026-07-10 18:43:19 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=74.2ms | user=policy@insureverify.com | msg=Response received
+2026-07-10 18:43:23 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=policy@insureverify.com | msg=Request sent
+2026-07-10 18:43:23 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=94.1ms | user=policy@insureverify.com | msg=Response received
+2026-07-10 18:43:25 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=policy@insureverify.com | msg=Request sent
+2026-07-10 18:43:25 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=80.3ms | user=policy@insureverify.com | msg=Response received
+2026-07-10 18:43:28 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=policy@insureverify.com | msg=Request sent
+2026-07-10 18:43:28 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=83.6ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 13:21:24 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-11 13:21:24 | WARNING  | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=401 | duration=57.8ms | msg=Incorrect email or password | error=Request failed with status code 401
+2026-07-11 13:21:24 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/register | msg=Request sent
+2026-07-11 13:21:24 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/register | status=201 | duration=319.5ms | msg=Response received
+2026-07-11 13:21:24 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-11 13:21:24 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=298.0ms | msg=Response received
+2026-07-11 13:21:24 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 13:21:24 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=17.9ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 13:22:07 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-11 13:22:08 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=288.0ms | msg=Response received
+2026-07-11 13:22:08 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=policy@insureverify.com | msg=Request sent
+2026-07-11 13:22:08 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=15.6ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 13:22:09 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=policy@insureverify.com | msg=Request sent
+2026-07-11 13:22:09 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=20.2ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 13:22:10 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=policy@insureverify.com | msg=Request sent
+2026-07-11 13:22:10 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=18.1ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 13:22:11 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=policy@insureverify.com | msg=Request sent
+2026-07-11 13:22:11 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=17.1ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 13:22:13 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=policy@insureverify.com | msg=Request sent
+2026-07-11 13:22:13 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=18.6ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 19:53:19 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-11 19:53:19 | WARNING  | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=401 | duration=128.3ms | msg=Incorrect email or password | error=Request failed with status code 401
+2026-07-11 19:53:28 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-11 19:53:29 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=774.3ms | msg=Response received
+2026-07-11 19:53:29 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 19:53:29 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=116.9ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 19:53:38 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/upload | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 19:53:38 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/upload | status=200 | duration=213.9ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 19:53:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 19:53:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 19:53:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=108.1ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 19:53:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | status=200 | duration=120.7ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 19:53:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 19:53:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 19:53:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | status=200 | duration=45.4ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 19:53:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | status=200 | duration=147.2ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 19:55:33 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/3/validate | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 19:55:34 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/3/validate | status=200 | duration=112.9ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 19:55:34 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 19:55:34 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | status=200 | duration=55.1ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 19:55:48 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/3/validate | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 19:55:48 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/3/validate | status=200 | duration=127.1ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 19:55:48 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 19:55:48 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | status=200 | duration=52.0ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 19:57:30 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/3/validate | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 19:57:31 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/3/validate | status=200 | duration=137.3ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 19:57:31 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 19:57:31 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | status=200 | duration=77.0ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:00:24 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-11 20:00:25 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=676.8ms | msg=Response received
+2026-07-11 20:00:25 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=policy@insureverify.com | msg=Request sent
+2026-07-11 20:00:25 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=164.2ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 20:00:26 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=policy@insureverify.com | msg=Request sent
+2026-07-11 20:00:26 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=48.3ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 20:00:27 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=policy@insureverify.com | msg=Request sent
+2026-07-11 20:00:27 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=44.4ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 20:00:29 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=policy@insureverify.com | msg=Request sent
+2026-07-11 20:00:29 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=46.9ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 20:04:17 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | user=policy@insureverify.com | msg=Request sent
+2026-07-11 20:04:17 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/2 | status=200 | duration=165.1ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 20:09:13 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-11 20:09:13 | WARNING  | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=401 | duration=162.3ms | msg=Incorrect email or password | error=Request failed with status code 401
+2026-07-11 20:09:13 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/register | msg=Request sent
+2026-07-11 20:09:14 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/register | status=201 | duration=1082.5ms | msg=Response received
+2026-07-11 20:09:14 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-11 20:09:15 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=660.4ms | msg=Response received
+2026-07-11 20:09:15 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=senior@insureverify.com | msg=Request sent
+2026-07-11 20:09:15 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=129.7ms | user=senior@insureverify.com | msg=Response received
+2026-07-11 20:09:17 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=senior@insureverify.com | msg=Request sent
+2026-07-11 20:09:17 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=40.9ms | user=senior@insureverify.com | msg=Response received
+2026-07-11 20:09:29 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=senior@insureverify.com | msg=Request sent
+2026-07-11 20:09:30 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=senior@insureverify.com | msg=Request sent
+2026-07-11 20:09:30 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=1246.3ms | user=senior@insureverify.com | msg=Response received
+2026-07-11 20:09:30 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=673.6ms | user=senior@insureverify.com | msg=Response received
+2026-07-11 20:09:31 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=senior@insureverify.com | msg=Request sent
+2026-07-11 20:09:31 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=35.1ms | user=senior@insureverify.com | msg=Response received
+2026-07-11 20:09:32 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=senior@insureverify.com | msg=Request sent
+2026-07-11 20:09:32 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=47.3ms | user=senior@insureverify.com | msg=Response received
+2026-07-11 20:09:34 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=senior@insureverify.com | msg=Request sent
+2026-07-11 20:09:34 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=49.4ms | user=senior@insureverify.com | msg=Response received
+2026-07-11 20:09:39 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-11 20:09:40 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=1055.2ms | msg=Response received
+2026-07-11 20:09:40 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:09:41 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=315.3ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:11:12 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-11 20:11:13 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=683.3ms | msg=Response received
+2026-07-11 20:11:14 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:11:14 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=367.0ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:11:16 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:11:16 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | status=200 | duration=49.2ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:11:16 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:11:16 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:11:16 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | status=200 | duration=55.5ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:11:16 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | status=200 | duration=56.1ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:11:27 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:11:27 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=128.4ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:11:29 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:11:29 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:11:30 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:11:30 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | status=200 | duration=14.0ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:11:30 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | status=200 | duration=14.2ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:11:30 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | status=200 | duration=612.7ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:11:33 | INFO     | FRONTEND | DELETE http://127.0.0.1:8000/api/v1/applications/3 | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:11:34 | INFO     | FRONTEND | DELETE http://127.0.0.1:8000/api/v1/applications/3 | status=204 | duration=407.1ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:11:34 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:11:34 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=71.7ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:11:37 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/upload | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:11:40 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/upload | status=200 | duration=2740.3ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:11:40 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:11:40 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:11:40 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:11:40 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:11:40 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | status=200 | duration=13.1ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:11:40 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | status=200 | duration=12.1ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:11:41 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=1103.3ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:11:41 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | status=200 | duration=1142.0ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:13:24 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:13:24 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=80.6ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:13:35 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:13:35 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=73.3ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:13:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:13:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:13:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:13:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | status=200 | duration=90.7ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:13:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | status=200 | duration=107.0ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:13:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | status=200 | duration=109.1ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:13:43 | INFO     | FRONTEND | DELETE http://127.0.0.1:8000/api/v1/applications/3 | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:13:43 | INFO     | FRONTEND | DELETE http://127.0.0.1:8000/api/v1/applications/3 | status=204 | duration=108.1ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:13:43 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:13:43 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=47.7ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:14:22 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/upload | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:14:24 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/upload | status=200 | duration=1777.5ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:14:24 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:14:24 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:14:24 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:14:24 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:14:24 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=81.9ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:14:24 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | status=200 | duration=57.9ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:14:24 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | status=200 | duration=107.6ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:14:24 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | status=200 | duration=107.6ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:18:40 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/3/validate | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:18:42 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:18:42 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/3/validate | status=200 | duration=1886.9ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:18:42 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | status=200 | duration=118.6ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:19:24 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/3/validate | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:19:28 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/3/validate | status=200 | duration=4316.9ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:19:28 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:19:28 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | status=200 | duration=357.6ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:20:34 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/3/submit | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:20:35 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/3/submit | status=200 | duration=111.4ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:20:35 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:20:35 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:20:35 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | status=200 | duration=484.9ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:20:35 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | status=200 | duration=505.5ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:20:49 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:20:50 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=1506.3ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:20:57 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:20:57 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:20:57 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:20:57 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | status=200 | duration=5507.6ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:20:58 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | status=200 | duration=6173.4ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:20:58 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | status=200 | duration=6174.0ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:21:10 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-11 20:21:11 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=667.6ms | msg=Response received
+2026-07-11 20:21:11 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=policy@insureverify.com | msg=Request sent
+2026-07-11 20:21:11 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=76.3ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 20:21:14 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | user=policy@insureverify.com | msg=Request sent
+2026-07-11 20:21:14 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | status=200 | duration=36.3ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 20:22:10 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/3/action | user=policy@insureverify.com | msg=Request sent
+2026-07-11 20:22:10 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/3/action | status=200 | duration=132.9ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 20:22:10 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | user=policy@insureverify.com | msg=Request sent
+2026-07-11 20:22:10 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | user=policy@insureverify.com | msg=Request sent
+2026-07-11 20:22:10 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | status=200 | duration=59.9ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 20:22:10 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | status=200 | duration=76.5ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 20:22:14 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-11 20:22:15 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=642.7ms | msg=Response received
+2026-07-11 20:22:15 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=senior@insureverify.com | msg=Request sent
+2026-07-11 20:22:15 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=144.9ms | user=senior@insureverify.com | msg=Response received
+2026-07-11 20:22:17 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | user=senior@insureverify.com | msg=Request sent
+2026-07-11 20:22:17 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | status=200 | duration=41.2ms | user=senior@insureverify.com | msg=Response received
+2026-07-11 20:22:18 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=senior@insureverify.com | msg=Request sent
+2026-07-11 20:22:19 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=46.3ms | user=senior@insureverify.com | msg=Response received
+2026-07-11 20:22:23 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=senior@insureverify.com | msg=Request sent
+2026-07-11 20:22:23 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=45.8ms | user=senior@insureverify.com | msg=Response received
+2026-07-11 20:22:24 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=senior@insureverify.com | msg=Request sent
+2026-07-11 20:22:24 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=36.5ms | user=senior@insureverify.com | msg=Response received
+2026-07-11 20:22:31 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | user=senior@insureverify.com | msg=Request sent
+2026-07-11 20:22:31 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | status=200 | duration=42.9ms | user=senior@insureverify.com | msg=Response received
+2026-07-11 20:22:51 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/3/action | user=senior@insureverify.com | msg=Request sent
+2026-07-11 20:22:51 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/3/action | status=200 | duration=105.0ms | user=senior@insureverify.com | msg=Response received
+2026-07-11 20:22:51 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | user=senior@insureverify.com | msg=Request sent
+2026-07-11 20:22:51 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | user=senior@insureverify.com | msg=Request sent
+2026-07-11 20:22:52 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | status=200 | duration=193.3ms | user=senior@insureverify.com | msg=Response received
+2026-07-11 20:22:52 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | status=200 | duration=213.7ms | user=senior@insureverify.com | msg=Response received
+2026-07-11 20:22:58 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-11 20:22:59 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=620.8ms | msg=Response received
+2026-07-11 20:22:59 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:23:00 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=656.8ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:23:01 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:23:01 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | status=200 | duration=34.2ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:23:01 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:23:01 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:23:04 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | status=200 | duration=2603.4ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:23:04 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | status=200 | duration=2604.6ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:28:24 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:28:24 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=64.5ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:28:31 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/upload | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:28:35 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/upload | status=200 | duration=4284.4ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:28:35 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:28:35 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/4 | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:28:35 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=179.7ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:28:35 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/4 | status=200 | duration=200.5ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:28:35 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/4/pdf | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:28:35 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/4/pdf | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:28:35 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/4/pdf | status=200 | duration=188.3ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:28:35 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/4/pdf | status=200 | duration=288.1ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:28:54 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/4/validate | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:28:56 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/4/validate | status=200 | duration=2382.8ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:28:56 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/4 | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:28:56 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/4 | status=200 | duration=71.7ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:34:05 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/4/validate | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:34:10 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/4/validate | status=200 | duration=4643.3ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:34:10 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/4 | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 20:34:10 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/4 | status=200 | duration=114.6ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 20:54:34 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/register | msg=Request sent
+2026-07-11 20:54:34 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/register | status=201 | duration=349.3ms | msg=Response received
+2026-07-11 20:54:53 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-11 20:54:53 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=292.9ms | msg=Response received
+2026-07-11 20:54:53 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 20:54:53 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=21.1ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 20:54:57 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/upload | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 20:54:58 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/upload | status=200 | duration=1154.4ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 20:54:58 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 20:54:58 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5 | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 20:54:58 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=33.0ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 20:54:58 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5 | status=200 | duration=32.0ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 20:54:58 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5/pdf | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 20:54:58 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5/pdf | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 20:54:58 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5/pdf | status=200 | duration=26.2ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 20:54:58 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5/pdf | status=200 | duration=65.2ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 20:55:09 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 20:55:09 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=20.2ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 20:55:12 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5/pdf | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 20:55:12 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5 | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 20:55:12 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5/pdf | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 20:55:12 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5 | status=200 | duration=31.6ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 20:55:12 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5/pdf | status=200 | duration=34.5ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 20:55:12 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5/pdf | status=200 | duration=34.6ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 20:55:21 | INFO     | FRONTEND | DELETE http://127.0.0.1:8000/api/v1/applications/5 | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 20:55:21 | INFO     | FRONTEND | DELETE http://127.0.0.1:8000/api/v1/applications/5 | status=204 | duration=52.2ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 20:55:21 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 20:55:21 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=18.2ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 20:55:25 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/upload | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 20:55:26 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/upload | status=200 | duration=938.9ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 20:55:26 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 20:55:26 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=21.1ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 20:55:26 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5/pdf | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 20:55:26 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5 | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 20:55:26 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5/pdf | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 20:55:26 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5 | status=200 | duration=25.3ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 20:55:26 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5/pdf | status=200 | duration=71.4ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 20:55:26 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5/pdf | status=200 | duration=72.6ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 20:56:09 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/5/validate | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 20:56:10 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/5/validate | status=200 | duration=948.7ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 20:56:10 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5 | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 20:56:10 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5 | status=200 | duration=18.6ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 20:56:29 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/5/validate | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 20:56:30 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/5/validate | status=200 | duration=802.7ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 20:56:30 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5 | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 20:56:30 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5 | status=200 | duration=18.5ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 20:56:33 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/5/submit | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 20:56:33 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/5/submit | status=200 | duration=34.0ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 20:56:33 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5 | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 20:56:33 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5 | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 20:56:33 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5 | status=200 | duration=23.2ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 20:56:33 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5 | status=200 | duration=37.3ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 20:56:43 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 20:56:43 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=19.5ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 20:56:47 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-11 20:56:47 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=289.6ms | msg=Response received
+2026-07-11 20:56:47 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=policy@insureverify.com | msg=Request sent
+2026-07-11 20:56:47 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=21.5ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 20:56:50 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5 | user=policy@insureverify.com | msg=Request sent
+2026-07-11 20:56:50 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5 | status=200 | duration=13.7ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 20:56:59 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/5/action | user=policy@insureverify.com | msg=Request sent
+2026-07-11 20:57:05 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/5/action | status=200 | duration=5930.9ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 20:57:05 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5 | user=policy@insureverify.com | msg=Request sent
+2026-07-11 20:57:05 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5 | user=policy@insureverify.com | msg=Request sent
+2026-07-11 20:57:05 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5 | status=200 | duration=24.3ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 20:57:05 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/5 | status=200 | duration=32.5ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 21:14:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=policy@insureverify.com | msg=Request sent
+2026-07-11 21:14:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=58.3ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 21:15:18 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-11 21:15:18 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=316.5ms | msg=Response received
+2026-07-11 21:15:18 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:15:18 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=16.2ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:15:24 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/upload | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:15:25 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/upload | status=200 | duration=1150.0ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:15:25 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:15:25 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/6 | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:15:25 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=36.1ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:15:25 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/6 | status=200 | duration=37.7ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:15:25 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/6/pdf | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:15:25 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/6/pdf | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:15:25 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/6/pdf | status=200 | duration=28.9ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:15:25 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/6/pdf | status=200 | duration=47.5ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:15:50 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/6/validate | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:15:51 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/6/validate | status=200 | duration=961.5ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:15:51 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/6 | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:15:51 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/6 | status=200 | duration=19.1ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:15:55 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/6/validate | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:15:55 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/6/validate | status=200 | duration=873.2ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:15:56 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/6 | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:15:56 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/6 | status=200 | duration=25.2ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:15:58 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/6/submit | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:15:58 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/6/submit | status=200 | duration=37.8ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:15:58 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/6 | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:16:01 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/6 | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:16:01 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/6 | status=200 | duration=3129.5ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:16:01 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/6 | status=200 | duration=23.1ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:16:06 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-11 21:16:06 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=280.5ms | msg=Response received
+2026-07-11 21:16:06 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=policy@insureverify.com | msg=Request sent
+2026-07-11 21:16:06 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=15.4ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 21:16:08 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/6 | user=policy@insureverify.com | msg=Request sent
+2026-07-11 21:16:08 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/6 | status=200 | duration=15.4ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 21:16:14 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/6/action | user=policy@insureverify.com | msg=Request sent
+2026-07-11 21:16:18 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/6/action | status=200 | duration=4162.0ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 21:16:18 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/6 | user=policy@insureverify.com | msg=Request sent
+2026-07-11 21:16:18 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/6 | user=policy@insureverify.com | msg=Request sent
+2026-07-11 21:16:18 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/6 | status=200 | duration=29.7ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 21:16:18 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/6 | status=200 | duration=40.6ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 21:17:57 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-11 21:17:57 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=280.1ms | msg=Response received
+2026-07-11 21:17:57 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:17:57 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=14.4ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:18:01 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/upload | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:18:02 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/upload | status=200 | duration=802.3ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:18:02 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:18:02 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/7 | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:18:02 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=28.5ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:18:02 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/7 | status=200 | duration=29.8ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:18:02 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/7/pdf | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:18:02 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/7/pdf | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:18:02 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/7/pdf | status=200 | duration=19.2ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:18:02 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/7/pdf | status=200 | duration=35.2ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:18:28 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/7/validate | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:18:29 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/7/validate | status=200 | duration=837.7ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:18:29 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/7 | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:18:29 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/7 | status=200 | duration=26.5ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:18:31 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/7/submit | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:18:31 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/7/submit | status=200 | duration=32.5ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:18:31 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/7 | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:18:32 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/7 | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:18:32 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/7 | status=200 | duration=1199.1ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:18:32 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/7 | status=200 | duration=23.7ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:18:38 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-11 21:18:38 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=277.3ms | msg=Response received
+2026-07-11 21:18:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=policy@insureverify.com | msg=Request sent
+2026-07-11 21:18:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=14.9ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 21:18:39 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/7 | user=policy@insureverify.com | msg=Request sent
+2026-07-11 21:18:39 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/7 | status=200 | duration=13.1ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 21:19:14 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/7/action | user=policy@insureverify.com | msg=Request sent
+2026-07-11 21:19:14 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/7/action | status=200 | duration=42.9ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 21:19:14 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/7 | user=policy@insureverify.com | msg=Request sent
+2026-07-11 21:19:14 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/7 | user=policy@insureverify.com | msg=Request sent
+2026-07-11 21:19:14 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/7 | status=200 | duration=21.3ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 21:19:14 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/7 | status=200 | duration=28.9ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 21:19:20 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=policy@insureverify.com | msg=Request sent
+2026-07-11 21:19:20 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=16.7ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 21:19:24 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-11 21:19:25 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=282.9ms | msg=Response received
+2026-07-11 21:19:25 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=senior@insureverify.com | msg=Request sent
+2026-07-11 21:19:25 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=19.1ms | user=senior@insureverify.com | msg=Response received
+2026-07-11 21:19:26 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/7 | user=senior@insureverify.com | msg=Request sent
+2026-07-11 21:19:26 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/7 | status=200 | duration=13.9ms | user=senior@insureverify.com | msg=Response received
+2026-07-11 21:19:58 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/7/action | user=senior@insureverify.com | msg=Request sent
+2026-07-11 21:20:02 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/7/action | status=200 | duration=4015.1ms | user=senior@insureverify.com | msg=Response received
+2026-07-11 21:20:02 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/7 | user=senior@insureverify.com | msg=Request sent
+2026-07-11 21:20:02 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/7 | user=senior@insureverify.com | msg=Request sent
+2026-07-11 21:20:02 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/7 | status=200 | duration=33.5ms | user=senior@insureverify.com | msg=Response received
+2026-07-11 21:20:02 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/7 | status=200 | duration=44.7ms | user=senior@insureverify.com | msg=Response received
+2026-07-11 21:20:07 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=senior@insureverify.com | msg=Request sent
+2026-07-11 21:20:07 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=13.4ms | user=senior@insureverify.com | msg=Response received
+2026-07-11 21:20:10 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=senior@insureverify.com | msg=Request sent
+2026-07-11 21:20:10 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=16.3ms | user=senior@insureverify.com | msg=Response received
+2026-07-11 21:20:35 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=senior@insureverify.com | msg=Request sent
+2026-07-11 21:20:35 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=15.7ms | user=senior@insureverify.com | msg=Response received
+2026-07-11 21:20:35 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=senior@insureverify.com | msg=Request sent
+2026-07-11 21:20:35 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=17.1ms | user=senior@insureverify.com | msg=Response received
+2026-07-11 21:20:36 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=senior@insureverify.com | msg=Request sent
+2026-07-11 21:20:36 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=15.7ms | user=senior@insureverify.com | msg=Response received
+2026-07-11 21:20:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=senior@insureverify.com | msg=Request sent
+2026-07-11 21:20:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=14.8ms | user=senior@insureverify.com | msg=Response received
+2026-07-11 21:20:39 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/7 | user=senior@insureverify.com | msg=Request sent
+2026-07-11 21:20:39 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/7 | status=200 | duration=15.1ms | user=senior@insureverify.com | msg=Response received
+2026-07-11 21:23:32 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-11 21:23:32 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=274.4ms | msg=Response received
+2026-07-11 21:23:32 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=policy@insureverify.com | msg=Request sent
+2026-07-11 21:23:32 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=15.6ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 21:27:21 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-11 21:27:21 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=286.8ms | msg=Response received
+2026-07-11 21:27:21 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:27:21 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=16.7ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:27:26 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/upload | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:27:27 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/upload | status=200 | duration=887.3ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:27:27 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:27:27 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/8 | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:27:27 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=28.6ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:27:27 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/8 | status=200 | duration=26.2ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:27:27 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/8/pdf | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:27:27 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/8/pdf | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:27:27 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/8/pdf | status=200 | duration=18.4ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:27:27 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/8/pdf | status=200 | duration=31.9ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:29:13 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/8/validate | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:29:14 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/8/validate | status=200 | duration=881.9ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:29:14 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/8 | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:29:14 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/8 | status=200 | duration=17.9ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:29:23 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/8/validate | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:29:24 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/8/validate | status=200 | duration=948.0ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:29:24 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/8 | user=ankit.009sg@gmail.com | msg=Request sent
+2026-07-11 21:29:24 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/8 | status=200 | duration=14.8ms | user=ankit.009sg@gmail.com | msg=Response received
+2026-07-11 21:52:16 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-11 21:52:16 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=348.4ms | msg=Response received
+2026-07-11 21:52:16 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 21:52:16 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=20.8ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 21:52:21 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/4 | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 21:52:21 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/4 | status=200 | duration=17.1ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 21:52:21 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/4/pdf | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 21:52:21 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/4/pdf | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 21:52:21 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/4/pdf | status=200 | duration=37.3ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 21:52:21 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/4/pdf | status=200 | duration=37.7ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 21:52:26 | INFO     | FRONTEND | DELETE http://127.0.0.1:8000/api/v1/applications/4 | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 21:52:26 | INFO     | FRONTEND | DELETE http://127.0.0.1:8000/api/v1/applications/4 | status=204 | duration=64.3ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 21:52:27 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 21:52:27 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=27.9ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 21:52:30 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 21:52:30 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3 | status=200 | duration=14.9ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 21:52:30 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 21:52:30 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 21:52:30 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | status=200 | duration=18.3ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 21:52:30 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/3/pdf | status=200 | duration=20.4ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 21:52:34 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 21:52:34 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=14.9ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 21:52:37 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/upload | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 21:52:38 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/upload | status=200 | duration=1135.4ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 21:52:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 21:52:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/9 | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 21:52:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=33.6ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 21:52:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/9 | status=200 | duration=32.5ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 21:52:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/9/pdf | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 21:52:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/9/pdf | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 21:52:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/9/pdf | status=200 | duration=23.4ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 21:52:38 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/9/pdf | status=200 | duration=40.2ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 21:53:09 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/9/validate | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 21:53:10 | INFO     | FRONTEND | PUT http://127.0.0.1:8000/api/v1/applications/9/validate | status=200 | duration=1034.1ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 21:53:10 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/9 | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 21:53:10 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/9 | status=200 | duration=17.5ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 21:53:50 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/9/submit | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 21:53:50 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/9/submit | status=200 | duration=50.8ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 21:53:50 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/9 | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 21:53:51 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/9 | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 21:53:51 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/9 | status=200 | duration=1350.8ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 21:53:51 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/9 | status=200 | duration=24.4ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 21:53:57 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 21:53:57 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=19.7ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 21:54:00 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-11 21:54:00 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=274.1ms | msg=Response received
+2026-07-11 21:54:00 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=policy@insureverify.com | msg=Request sent
+2026-07-11 21:54:00 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=19.6ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 21:54:03 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/9 | user=policy@insureverify.com | msg=Request sent
+2026-07-11 21:54:03 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/9 | status=200 | duration=16.6ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 21:54:28 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/9/action | user=policy@insureverify.com | msg=Request sent
+2026-07-11 21:54:32 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/applications/9/action | status=200 | duration=3966.8ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 21:54:32 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/9 | user=policy@insureverify.com | msg=Request sent
+2026-07-11 21:54:32 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/9 | user=policy@insureverify.com | msg=Request sent
+2026-07-11 21:54:32 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/9 | status=200 | duration=24.0ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 21:54:32 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/9 | status=200 | duration=32.5ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 22:09:00 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/9 | user=policy@insureverify.com | msg=Request sent
+2026-07-11 22:09:00 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/9 | status=200 | duration=20.1ms | user=policy@insureverify.com | msg=Response received
+2026-07-11 22:09:15 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | msg=Request sent
+2026-07-11 22:09:15 | INFO     | FRONTEND | POST http://127.0.0.1:8000/api/v1/auth/login-json | status=200 | duration=288.6ms | msg=Response received
+2026-07-11 22:09:15 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 22:09:15 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications | status=200 | duration=17.2ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 22:09:31 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/9 | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 22:09:31 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/9 | status=200 | duration=15.6ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 22:09:31 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/9/pdf | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 22:09:31 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/9/pdf | user=applicant@insureverify.com | msg=Request sent
+2026-07-11 22:09:31 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/9/pdf | status=200 | duration=27.6ms | user=applicant@insureverify.com | msg=Response received
+2026-07-11 22:09:31 | INFO     | FRONTEND | GET http://127.0.0.1:8000/api/v1/applications/9/pdf | status=200 | duration=27.8ms | user=applicant@insureverify.com | msg=Response received

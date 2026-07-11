@@ -36,6 +36,7 @@ class TokenData(BaseModel):
 class FlagSchema(BaseModel):
     severity: str  # "low", "medium", "high"
     message: str
+    blocking: bool = True
 
 class ExtractedFieldSchema(BaseModel):
     label: str

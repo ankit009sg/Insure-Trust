@@ -124,7 +124,7 @@ export const PolicyManagerDashboard: React.FC = () => {
                     </td>
                     <td className="py-4 px-6">
                       <div className="text-slate-300 font-medium font-mono">
-                        {app.extracted_data.full_name?.value || `User ID: ${app.applicant_id}`}
+                        {app.extracted_data.name?.value || `User ID: ${app.applicant_id}`}
                       </div>
                     </td>
                     <td className="py-4 px-6">

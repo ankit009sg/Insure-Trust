@@ -208,13 +208,16 @@ export const ApplicationDetail: React.FC = () => {
             <div className="space-y-4 max-h-[300px] overflow-y-auto pr-1">
               {Object.entries(application.extracted_data).map(([key, field]) => {
                 const hasFlags = field.flags && field.flags.length > 0;
+                const hasBlocking = hasFlags && field.flags.some(f => f.blocking);
                 
                 return (
                   <div 
                     key={key} 
                     className={`p-4 rounded-xl border ${
                       hasFlags 
-                        ? 'bg-amber-500/5 border-amber-500/20' 
+                        ? hasBlocking
+                          ? 'bg-amber-500/5 border-amber-500/20' 
+                          : 'bg-purple-500/5 border-purple-500/20'
                         : 'bg-slate-900/10 border-slate-900'
                     }`}
                   >
@@ -223,8 +226,12 @@ export const ApplicationDetail: React.FC = () => {
                         {field.label}
                       </span>
                       {hasFlags && (
-                        <span className="text-[9px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/25 px-2 py-0.5 rounded-full uppercase tracking-wider">
-                          Unresolved flag
+                        <span className={`text-[9px] font-bold border px-2 py-0.5 rounded-full uppercase tracking-wider ${
+                          hasBlocking
+                            ? 'bg-amber-500/10 text-amber-400 border-amber-500/25'
+                            : 'bg-purple-500/10 text-purple-400 border-purple-500/25'
+                        }`}>
+                          {hasBlocking ? 'Data Quality Issue' : 'Underwriting Risk'}
                         </span>
                       )}
                     </div>
@@ -236,8 +243,12 @@ export const ApplicationDetail: React.FC = () => {
                     </div>
 
                     {hasFlags && field.flags.map((flg, idx) => (
-                      <div key={idx} className="mt-2.5 flex items-start gap-2 bg-slate-950/80 border border-slate-900 rounded-lg p-2.5 text-xs text-slate-300">
-                        <AlertTriangle className="h-4 w-4 shrink-0 text-amber-400 mt-0.5" />
+                      <div key={idx} className={`mt-2.5 flex items-start gap-2 border rounded-lg p-2.5 text-xs ${
+                        flg.blocking
+                          ? 'bg-slate-950/80 border-slate-900 text-amber-300'
+                          : 'bg-slate-950/80 border-slate-900 text-purple-300'
+                      }`}>
+                        <AlertTriangle className={`h-4 w-4 shrink-0 mt-0.5 ${flg.blocking ? 'text-amber-400' : 'text-purple-400'}`} />
                         <span>{flg.message}</span>
                       </div>
                     ))}

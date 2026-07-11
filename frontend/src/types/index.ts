@@ -9,6 +9,7 @@ export interface User {
 export interface Flag {
   severity: 'low' | 'medium' | 'high';
   message: string;
+  blocking: boolean;
 }
 
 export interface ExtractedField {
