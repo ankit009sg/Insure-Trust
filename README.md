@@ -1,6 +1,6 @@
 # InsureTrust: AI-Powered Life Insurance Intake & Underwriting Platform
 
-**InsureTrust** (API title: *InsureVerify*) is an automated life insurance application ingestion and rule-based underwriting evaluation platform. It leverages Large Language Models (LLMs) and standard rule checks to transform raw, unstructured PDF application forms into verified, structured data, highlighting potential health and financial risks for expedited decision-making.
+**InsureTrust** is an automated life insurance application ingestion and rule-based underwriting evaluation platform. It leverages Large Language Models (LLMs) and standard rule checks to transform raw, unstructured PDF application forms into verified, structured data, highlighting potential health and financial risks for expedited decision-making.
 
 ---
 
