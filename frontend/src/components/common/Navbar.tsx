@@ -35,10 +35,10 @@ export const Navbar: React.FC = () => {
       className="border-b sticky top-0 z-50 px-6 py-3.5 transition-all duration-300"
       style={{
         background: isLight
-          ? 'rgba(255,255,255,0.92)'
+          ? '#1a2738'
           : 'rgba(10,13,22,0.88)',
         borderBottomColor: isLight
-          ? 'rgba(203,213,225,0.80)'
+          ? 'rgba(255,255,255,0.07)'
           : 'rgba(30,41,59,0.80)',
         backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)',
@@ -50,8 +50,8 @@ export const Navbar: React.FC = () => {
           <div className="p-2 rounded-xl bg-gradient-to-tr from-brand-600 to-brand-400 shadow-lg shadow-brand-500/25">
             <Shield className="h-5 w-5 text-white" />
           </div>
-          <span className={`text-xl font-bold tracking-tight ${isLight ? 'text-slate-800' : 'text-white'}`}>
-            Insure<span className="text-brand-500">Trust</span>
+          <span className={`text-xl font-bold tracking-tight ${isLight ? 'text-white' : 'text-white'}`}>
+            Insure<span className="text-brand-300">Trust</span>
           </span>
         </Link>
 
@@ -61,20 +61,20 @@ export const Navbar: React.FC = () => {
           <div
             className="flex items-center gap-3 rounded-2xl px-4 py-1.5 border transition-colors"
             style={{
-              background: isLight ? 'rgba(241,245,249,0.85)' : 'rgba(15,23,42,0.60)',
-              borderColor: isLight ? 'rgba(203,213,225,0.80)' : 'rgba(30,41,59,0.80)',
+              background: isLight ? 'rgba(255,255,255,0.08)' : 'rgba(15,23,42,0.60)',
+              borderColor: isLight ? 'rgba(255,255,255,0.12)' : 'rgba(30,41,59,0.80)',
             }}
           >
             <div
               className="p-1 rounded-lg"
-              style={{ background: isLight ? '#e2e8f0' : 'rgba(30,41,59,0.80)' }}
+              style={{ background: isLight ? 'rgba(255,255,255,0.15)' : 'rgba(30,41,59,0.80)' }}
             >
-              <UserIcon className={`h-4 w-4 ${isLight ? 'text-slate-500' : 'text-slate-400'}`} />
+              <UserIcon className={`h-4 w-4 ${isLight ? 'text-slate-200' : 'text-slate-400'}`} />
             </div>
             <div className="flex flex-col">
               <span
                 className="text-xs max-w-[150px] truncate font-medium"
-                style={{ color: isLight ? '#334155' : '#94a3b8' }}
+                style={{ color: isLight ? '#e2e8f0' : '#94a3b8' }}
               >
                 {email}
               </span>
@@ -94,12 +94,12 @@ export const Navbar: React.FC = () => {
             aria-label="Toggle theme"
             className="flex items-center justify-center w-9 h-9 rounded-xl border transition-all duration-200 hover:scale-105 active:scale-95"
             style={{
-              background: isLight ? 'rgba(241,245,249,0.85)' : 'rgba(15,23,42,0.70)',
-              borderColor: isLight ? 'rgba(203,213,225,0.80)' : 'rgba(30,41,59,0.80)',
+              background: isLight ? 'rgba(255,255,255,0.10)' : 'rgba(15,23,42,0.70)',
+              borderColor: isLight ? 'rgba(255,255,255,0.15)' : 'rgba(30,41,59,0.80)',
             }}
           >
             {isLight ? (
-              <Moon className="h-4 w-4 text-brand-600" />
+              <Moon className="h-4 w-4 text-slate-200" />
             ) : (
               <Sun className="h-4 w-4 text-amber-400" />
             )}
@@ -110,9 +110,9 @@ export const Navbar: React.FC = () => {
             onClick={handleLogout}
             className="flex items-center gap-2 border px-4 py-2 rounded-xl transition-all duration-200 text-sm font-medium"
             style={{
-              background: isLight ? 'rgba(241,245,249,0.85)' : 'rgba(15,23,42,0.70)',
-              borderColor: isLight ? 'rgba(203,213,225,0.80)' : 'rgba(30,41,59,0.80)',
-              color: isLight ? '#334155' : '#94a3b8',
+              background: isLight ? 'rgba(255,255,255,0.08)' : 'rgba(15,23,42,0.70)',
+              borderColor: isLight ? 'rgba(255,255,255,0.12)' : 'rgba(30,41,59,0.80)',
+              color: isLight ? '#e2e8f0' : '#94a3b8',
             }}
           >
             <LogOut className="h-4 w-4" />

@@ -1,5 +1,6 @@
 import re
 import os
+import json
 import fitz  # PyMuPDF
 from typing import Dict, Any, Tuple, List, Optional
 from groq import Groq
@@ -8,6 +9,166 @@ from backend.app.core.logger import get_backend_logger
 
 logger = get_backend_logger()
 
+
+# ---------------------------------------------------------------------------
+# 1. Groq — Structured field extraction from raw PDF text
+# ---------------------------------------------------------------------------
+
+def extract_fields_with_groq(text: str) -> Tuple[Dict[str, Any], Optional[str]]:
+    """
+    Sends raw PDF text to Groq (llama-3.1-8b-instant) and asks it to extract
+    all insurance application fields as a structured JSON object.
+
+    Returns:
+      (fields_dict, error_or_None)
+      Fields dict maps each key to its extracted string value (or "" if absent).
+      NEVER returns fabricated / placeholder data — only what is found in text.
+    """
+    groq_api_key = os.getenv("GROQ_API_KEY")
+    if not groq_api_key:
+        logger.warning("GROQ_API_KEY not set — falling back to regex extraction.")
+        return {}, "GROQ_API_KEY not configured"
+
+    if not text or len(text.strip()) < 20:
+        logger.warning("PDF text too short for Groq extraction — returning empty fields.")
+        return {}, "PDF text too short"
+
+    prompt = (
+        "You are an AI data extraction assistant for a life insurance intake platform.\n"
+        "Below is raw text extracted from an applicant's PDF document.\n"
+        "Your task is to extract the following fields and return them as a single valid JSON object.\n\n"
+        "STRICT RULES:\n"
+        "1. Return ONLY a valid JSON object — no explanation, no markdown fences.\n"
+        "2. If a field is NOT present or cannot be determined from the text, set it to null.\n"
+        "3. Do NOT invent, guess, or hallucinate any value. Only extract text that is explicitly present.\n"
+        "4. For numbers (annual_income, coverage_amount), return the numeric value as a string with no currency symbols or commas.\n"
+        "5. For policy_term, return just the number of years as a string e.g. '20'.\n"
+        "6. For dob, return in YYYY-MM-DD format if possible, or as-found if the format differs.\n"
+        "7. For pan_number, return in UPPERCASE with no spaces.\n"
+        "8. For phone, return digits only (strip spaces/dashes/brackets).\n\n"
+        "Fields to extract (JSON keys):\n"
+        "  name           — Applicant full legal name\n"
+        "  dob            — Date of birth\n"
+        "  gender         — Gender / sex\n"
+        "  pan_number     — PAN card number (Indian tax ID, format AAAAA9999A)\n"
+        "  phone          — Mobile / contact number\n"
+        "  email          — Email address\n"
+        "  address        — Residential address\n"
+        "  tobacco_use    — Tobacco / smoking use (Yes / No / Former / Never)\n"
+        "  pre_existing_conditions — Any declared medical conditions\n"
+        "  alcohol_consumption     — Alcohol use (None / Occasional / Moderate / Social / Heavy)\n"
+        "  family_history          — Family medical history\n"
+        "  profession              — Occupation / job title\n"
+        "  annual_income           — Annual income in INR (numeric only)\n"
+        "  coverage_amount         — Requested coverage / sum assured in INR (numeric only)\n"
+        "  policy_term             — Desired policy term in years (numeric only)\n"
+        "  nominee                 — Nominee / beneficiary name\n"
+        "  employment_type         — Type of employment (Employed / Self-Employed / Retired / Unemployed / Student)\n\n"
+        "Document text:\n"
+        "---\n"
+        f"{text[:6000]}\n"   # Truncate to avoid token overflow; 6000 chars ≈ ~1500 tokens
+        "---\n"
+        "Return the JSON object now:"
+    )
+
+    try:
+        client = Groq(api_key=groq_api_key)
+        completion = client.chat.completions.create(
+            model="llama-3.1-8b-instant",
+            messages=[
+                {
+                    "role": "system",
+                    "content": (
+                        "You are an expert data extraction engine. "
+                        "You output ONLY valid JSON objects. Never add any text before or after the JSON."
+                    ),
+                },
+                {"role": "user", "content": prompt},
+            ],
+            temperature=0.0,   # Deterministic — no creativity
+            max_tokens=600,
+            response_format={"type": "json_object"},
+        )
+
+        raw_json = completion.choices[0].message.content.strip()
+        logger.info(f"Groq extraction raw response ({len(raw_json)} chars): {raw_json[:300]}...")
+
+        parsed: Dict[str, Any] = json.loads(raw_json)
+
+        # Normalise: null → "", strip whitespace, keep only known keys
+        KNOWN_KEYS = {
+            "name", "dob", "gender", "pan_number", "phone", "email", "address",
+            "tobacco_use", "pre_existing_conditions", "alcohol_consumption",
+            "family_history", "profession", "annual_income", "coverage_amount",
+            "policy_term", "nominee", "employment_type",
+        }
+        fields: Dict[str, Any] = {}
+        for key in KNOWN_KEYS:
+            val = parsed.get(key)
+            if val is None or str(val).strip().lower() in ("null", "none", "n/a", "na", ""):
+                fields[key] = ""
+            else:
+                fields[key] = str(val).strip()
+
+        found_count = sum(1 for v in fields.values() if v)
+        logger.info(
+            f"Groq structured extraction complete: {found_count}/{len(KNOWN_KEYS)} fields populated."
+        )
+        return fields, None
+
+    except json.JSONDecodeError as e:
+        logger.error(f"Groq returned invalid JSON: {e}")
+        return {}, f"JSON parse error: {e}"
+    except Exception as e:
+        logger.error(f"Groq extraction API error [{type(e).__name__}]: {e}", exc_info=True)
+        return {}, f"Groq API error: {type(e).__name__}: {e}"
+
+
+# ---------------------------------------------------------------------------
+# 2. Regex fallback extraction (used when Groq is unavailable)
+# ---------------------------------------------------------------------------
+
+def extract_fields_with_regex(text: str) -> Dict[str, Any]:
+    """
+    Fallback regex-based extraction from PDF text.
+    Only returns values that are explicitly matched — no fabricated data.
+    """
+    data: Dict[str, Any] = {}
+
+    patterns = {
+        "name":                    r"(?:Full\s*Name|Name)[:\s]+([^\n\r|]+)",
+        "dob":                     r"(?:Date\s*of\s*Birth|DOB|Birthdate|Birth\s*Date)[:\s]+([^\n\r|]+)",
+        "gender":                  r"(?:Gender|Sex)[:\s]+([^\n\r|]+)",
+        "pan_number":              r"(?:PAN\s*(?:Number|No|Card)?|Permanent\s*Account\s*Number)[:\s]+([A-Z0-9a-z\-\s]{5,15})",
+        "phone":                   r"(?:Phone|Mobile|Contact\s*(?:No|Number)|Cell)[:\s]+([0-9\+\-\s\(\)]{7,15})",
+        "email":                   r"(?:Email|E-mail|Email\s*Address)[:\s]+([a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,})",
+        "address":                 r"(?:Address|Residential\s*Address|Home\s*Address)[:\s]+([^\n\r]{5,120})",
+        "tobacco_use":             r"(?:Tobacco\s*Use|Smoker|Tobacco|Smoking)[:\s]+(Yes|No|Y|N|Never|Former|Current)",
+        "pre_existing_conditions": r"(?:Pre-?existing\s*Conditions?|Medical\s*History|Conditions?|Health\s*Issues?)[:\s]+([^\n\r]+)",
+        "alcohol_consumption":     r"(?:Alcohol\s*Consumption|Alcohol|Drinking)[:\s]+(None|Moderate|Heavy|Social|Never|Occasional|Rarely)",
+        "family_history":          r"(?:Family\s*History|Family\s*Medical\s*History)[:\s]+([^\n\r]+)",
+        "profession":              r"(?:Occupation|Job\s*Title|Profession|Employment)[:\s]+([^\n\r|]+)",
+        "annual_income":           r"(?:Annual\s*Income|Yearly\s*Income|Income\s*\(.*?\)|Income)[:\s]+(?:Rs\.?|INR|₹)?\s*([\d,]+(?:\.\d{1,2})?)",
+        "coverage_amount":         r"(?:Coverage\s*Amount|Face\s*Amount|Sum\s*Assured|Coverage|Insured\s*Amount)[:\s]+(?:Rs\.?|INR|₹|\$)?\s*([\d,]+(?:\.\d{1,2})?)",
+        "policy_term":             r"(?:Policy\s*Term|Term\s*of\s*Policy|Coverage\s*Period|Policy\s*Duration)[:\s]+([\d]+\s*(?:years?|yrs?)?)",
+        "nominee":                 r"(?:Nominee|Beneficiary|Nominated\s*Person)[:\s]+([^\n\r|]+)",
+        "employment_type":         r"(?:Employment\s*Type|Job\s*Type|Type\s*of\s*Employment)[:\s]+([^\n\r|]+)",
+    }
+
+    for key, pattern in patterns.items():
+        match = re.search(pattern, text, re.IGNORECASE)
+        if match:
+            raw = match.group(1).strip()
+            raw = re.sub(r"[|\s]+$", "", raw).strip()
+            if raw:
+                data[key] = raw
+
+    return data
+
+
+# ---------------------------------------------------------------------------
+# 3. Groq — AI underwriting summary (unchanged from original)
+# ---------------------------------------------------------------------------
 
 def generate_groq_summary(
     fields: Dict[str, Any],
@@ -85,6 +246,10 @@ def generate_groq_summary(
         return "", f"Groq API error: {error_type} — {str(e)}"
 
 
+# ---------------------------------------------------------------------------
+# 4. PDF text extraction via PyMuPDF
+# ---------------------------------------------------------------------------
+
 def extract_text_from_pdf(file_path: str) -> Tuple[str, Optional[str]]:
     """
     Extracts plain text from a PDF file using PyMuPDF.
@@ -98,7 +263,7 @@ def extract_text_from_pdf(file_path: str) -> Tuple[str, Optional[str]]:
             text += page.get_text()
         doc.close()
         logger.info(
-            f"PDF extracted successfully: '{file_path}' — {len(text)} chars across {doc.page_count if not doc.is_closed else '?'} pages"
+            f"PDF extracted successfully: '{file_path}' — {len(text)} chars"
         )
     except fitz.FileDataError as e:
         error = f"PDF is corrupted or unreadable: {e}"
@@ -112,63 +277,9 @@ def extract_text_from_pdf(file_path: str) -> Tuple[str, Optional[str]]:
     return text, error
 
 
-def parse_extracted_text(text: str) -> Dict[str, Any]:
-    """
-    Searches for life insurance application fields in the extracted PDF text.
-    Uses regex to extract keys. Returns a dict of standard string values.
-    Covers both basic and expanded fields seen on InsureTrust forms.
-    """
-    data = {}
-
-    # --- Core Personal Fields ---
-    patterns = {
-        # Name
-        "name": r"(?:Full\s*Name|Name)[:\s]+([^\n\r|]+)",
-        # Date of Birth
-        "dob": r"(?:Date\s*of\s*Birth|DOB|Birthdate|Birth\s*Date)[:\s]+([^\n\r|]+)",
-        # Gender / Sex
-        "gender": r"(?:Gender|Sex)[:\s]+([^\n\r|]+)",
-        # PAN Number
-        "pan_number": r"(?:PAN\s*(?:Number|No|Card)?|Permanent\s*Account\s*Number)[:\s]+([A-Z0-9a-z\-\s]{5,15})",
-        # Phone / Mobile
-        "phone": r"(?:Phone|Mobile|Contact\s*(?:No|Number)|Cell)[:\s]+([0-9\+\-\s\(\)]{7,15})",
-        # Email
-        "email": r"(?:Email|E-mail|Email\s*Address)[:\s]+([a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,})",
-        # Address
-        "address": r"(?:Address|Residential\s*Address|Home\s*Address)[:\s]+([^\n\r]{5,120})",
-        # Tobacco
-        "tobacco_use": r"(?:Tobacco\s*Use|Smoker|Tobacco|Smoking)[:\s]+(Yes|No|Y|N|Never|Former|Current)",
-        # Pre-existing Conditions
-        "pre_existing_conditions": r"(?:Pre-?existing\s*Conditions?|Medical\s*History|Conditions?|Health\s*Issues?)[:\s]+([^\n\r]+)",
-        # Alcohol
-        "alcohol_consumption": r"(?:Alcohol\s*Consumption|Alcohol|Drinking)[:\s]+(None|Moderate|Heavy|Social|Never|Occasional|Rarely)",
-        # Family History
-        "family_history": r"(?:Family\s*History|Family\s*Medical\s*History)[:\s]+([^\n\r]+)",
-        # Occupation / Profession / Job
-        "profession": r"(?:Occupation|Job\s*Title|Profession|Employment)[:\s]+([^\n\r|]+)",
-        # Annual Income
-        "annual_income": r"(?:Annual\s*Income|Yearly\s*Income|Income\s*\(.*?\)|Income)[:\s]+(?:Rs\.?|INR|₹)?\s*([\d,]+(?:\.\d{1,2})?)",
-        # Coverage / Sum Assured
-        "coverage_amount": r"(?:Coverage\s*Amount|Face\s*Amount|Sum\s*Assured|Coverage|Insured\s*Amount)[:\s]+(?:Rs\.?|INR|₹|\$)?\s*([\d,]+(?:\.\d{1,2})?)",
-        # Policy Term
-        "policy_term": r"(?:Policy\s*Term|Term\s*of\s*Policy|Coverage\s*Period|Policy\s*Duration)[:\s]+([\d]+\s*(?:years?|yrs?)?)",
-        # Nominee / Beneficiary
-        "nominee": r"(?:Nominee|Beneficiary|Nominated\s*Person)[:\s]+([^\n\r|]+)",
-        # Employment Type
-        "employment_type": r"(?:Employment\s*Type|Job\s*Type|Type\s*of\s*Employment)[:\s]+([^\n\r|]+)",
-    }
-
-    for key, pattern in patterns.items():
-        match = re.search(pattern, text, re.IGNORECASE)
-        if match:
-            raw = match.group(1).strip()
-            # Strip trailing punctuation / whitespace artifacts
-            raw = re.sub(r"[|\s]+$", "", raw).strip()
-            if raw:
-                data[key] = raw
-
-    return data
-
+# ---------------------------------------------------------------------------
+# 5. Underwriting validation rules
+# ---------------------------------------------------------------------------
 
 def run_validation_rules(
     fields: Dict[str, Any],
@@ -184,23 +295,23 @@ def run_validation_rules(
 
     # 1. Define all fields and their display labels
     field_metadata = {
-        "name":                  "Full Name",
-        "dob":                   "Date of Birth",
-        "gender":                "Gender",
-        "pan_number":            "PAN Number",
-        "phone":                 "Phone Number",
-        "email":                 "Email Address",
-        "address":               "Address",
-        "tobacco_use":           "Tobacco Use",
+        "name":                    "Full Name",
+        "dob":                     "Date of Birth",
+        "gender":                  "Gender",
+        "pan_number":              "PAN Number",
+        "phone":                   "Phone Number",
+        "email":                   "Email Address",
+        "address":                 "Address",
+        "tobacco_use":             "Tobacco Use",
         "pre_existing_conditions": "Pre-existing Conditions",
-        "alcohol_consumption":   "Alcohol Consumption",
-        "family_history":        "Family History",
-        "profession":            "Profession",
-        "annual_income":         "Annual Income (₹)",
-        "coverage_amount":       "Coverage Amount (₹)",
-        "policy_term":           "Policy Term",
-        "nominee":               "Nominee / Beneficiary",
-        "employment_type":       "Employment Type",
+        "alcohol_consumption":     "Alcohol Consumption",
+        "family_history":          "Family History",
+        "profession":              "Profession",
+        "annual_income":           "Annual Income (₹)",
+        "coverage_amount":         "Coverage Amount (₹)",
+        "policy_term":             "Policy Term",
+        "nominee":                 "Nominee / Beneficiary",
+        "employment_type":         "Employment Type",
     }
 
     # 2. Populate fields with extracted or existing values
@@ -275,15 +386,21 @@ def run_validation_rules(
             "blocking": True,
         })
 
-    # Phone — must contain at least 10 digits
+    # Phone — must be exactly 10 digits (Indian standard)
     phone_val = updated_fields["phone"]["value"]
     if phone_val:
         digits_only = re.sub(r"\D", "", phone_val)
         if len(digits_only) < 10:
             updated_fields["phone"]["flags"].append({
                 "severity": "medium",
-                "message": "Phone number must contain at least 10 digits.",
+                "message": f"Phone number has {len(digits_only)} digit(s); must be at least 10 digits.",
                 "blocking": True,
+            })
+        elif len(digits_only) > 12:
+            updated_fields["phone"]["flags"].append({
+                "severity": "low",
+                "message": "Phone number appears unusually long. Verify this is correct.",
+                "blocking": False,
             })
     else:
         updated_fields["phone"]["flags"].append({
@@ -306,6 +423,15 @@ def run_validation_rules(
             "severity": "low",
             "message": "Email address is missing.",
             "blocking": True,
+        })
+
+    # Address
+    addr_val = updated_fields["address"]["value"]
+    if not addr_val:
+        updated_fields["address"]["flags"].append({
+            "severity": "low",
+            "message": "Residential address is missing. Required for policy delivery.",
+            "blocking": False,
         })
 
     # Tobacco Use
@@ -442,6 +568,12 @@ def run_validation_rules(
                     "message": f"Policy term ({term_years} years) must be between 5 and 30 years.",
                     "blocking": True,
                 })
+    else:
+        updated_fields["policy_term"]["flags"].append({
+            "severity": "low",
+            "message": "Policy term is missing. Please specify the desired coverage period (5–30 years).",
+            "blocking": False,
+        })
 
     # 4. Determine overall risk rating
     all_flags: List[Dict] = []
@@ -449,7 +581,7 @@ def run_validation_rules(
         all_flags.extend(fd["flags"])
 
     has_high = any(f["severity"] == "high" for f in all_flags)
-    has_med = any(f["severity"] == "medium" for f in all_flags)
+    has_med  = any(f["severity"] == "medium" for f in all_flags)
 
     if has_high:
         risk_rating = "high"
@@ -508,53 +640,60 @@ def run_validation_rules(
     return final_fields, summary, risk_rating
 
 
+# ---------------------------------------------------------------------------
+# 6. Main pipeline: PDF → Groq extraction → validation → results
+# ---------------------------------------------------------------------------
+
 def process_document(
     file_path: str,
 ) -> Tuple[Dict[str, ExtractedFieldSchema], str, str]:
     """
-    Full pipeline: extract PDF text → parse fields → validate → return results.
-    If extraction fails or yields too few fields, uses a demo profile so the
-    UI always has data to display.
+    Full pipeline:
+      1. Extract raw text from PDF via PyMuPDF
+      2. Use Groq LLM to extract structured fields from text
+         (falls back to regex if Groq is unavailable)
+      3. Run underwriting validation rules on extracted fields
+      4. Return (fields_with_flags, summary, risk_rating)
+
+    Resilience policy:
+      - If the document is missing fields, those fields return as empty strings ""
+      - No dummy / demo data is ever injected
+      - All validation flags are raised purely based on what was (or wasn't) extracted
     """
+    # Step 1: Extract raw text
     text, extract_error = extract_text_from_pdf(file_path)
-
     if extract_error:
-        logger.warning(
-            f"PDF extraction error — using demo profile. Reason: {extract_error}"
-        )
+        logger.warning(f"PDF extraction error: {extract_error}")
 
-    extracted = parse_extracted_text(text) if text else {}
+    # Step 2: Structured Groq extraction (primary path)
+    extracted: Dict[str, Any] = {}
+    if text and len(text.strip()) >= 20:
+        groq_fields, groq_error = extract_fields_with_groq(text)
+        if groq_error:
+            logger.warning(
+                f"Groq extraction failed ({groq_error}). "
+                "Falling back to regex extraction."
+            )
+            extracted = extract_fields_with_regex(text)
+        else:
+            extracted = groq_fields
+    else:
+        logger.warning("No usable text extracted from PDF — all fields will be empty with flags.")
+        extracted = {}
 
+    found_count = sum(1 for v in extracted.values() if v)
     logger.info(
-        f"Parsed fields from PDF: {list(extracted.keys())} "
-        f"({'OK' if len(extracted) >= 3 else 'sparse'})"
+        f"Document processing: {found_count} fields extracted from '{file_path}'. "
+        f"Proceeding to validation."
     )
 
-    # If file contains no recognisable fields (< 3 matches), fall back to demo profile
-    if len(extracted) < 3:
-        logger.info("Insufficient fields extracted — using demo profile with flags.")
-        extracted = {
-            "name":                    "Vikram Singh",
-            "dob":                     "1958-02-14",
-            "gender":                  "Male",
-            "pan_number":              "ABCDE12345",  # intentionally invalid for demo flags
-            "phone":                   "XXXX0000X",   # intentionally invalid
-            "email":                   "vikram.singh@",  # intentionally invalid
-            "address":                 "Flat 7, Sector 22, Noida, UP 201301",
-            "tobacco_use":             "No",
-            "pre_existing_conditions": "Hypertension",
-            "alcohol_consumption":     "None",
-            "family_history":          "Heart disease (Father)",
-            "profession":              "Retired",
-            "annual_income":           "240000",
-            "coverage_amount":         "5000000",
-            "policy_term":             "40",  # intentionally out-of-range
-            "nominee":                 "Meena Singh (Spouse)",
-            "employment_type":         "Retired",
-        }
-
+    # Step 3: Validate and return
     return run_validation_rules(extracted)
 
+
+# ---------------------------------------------------------------------------
+# 7. Email notification
+# ---------------------------------------------------------------------------
 
 def send_email_notification(email: str, status: str, reason: str, case_id: int):
     """
@@ -562,7 +701,6 @@ def send_email_notification(email: str, status: str, reason: str, case_id: int):
     Passes case info to nodemailer helper.
     """
     import subprocess
-    import json
 
     payload = {
         "email": email,

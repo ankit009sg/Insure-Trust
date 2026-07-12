@@ -1,0 +1,82 @@
+# Python virtual environment
+venv/
+.venv/
+env/
+ENV/
+bin/
+lib/
+include/
+share/
+
+# Python caching & bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.hypothesis/
+.cache/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+test_insureverify.db
+
+# Environment Configuration
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Dependency directories
+node_modules/
+backend/node_modules/
+frontend/node_modules/
+jspm_packages/
+web_modules/
+
+# Build & Bundler outputs
+dist/
+frontend/dist/
+build/
+out/
+.next/
+.nuxt/
+.cache/
+.parcel-cache/
+.vitepress/dist
+
+# Logs & Runtime files
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Uploads / Dynamic storage
+uploads/*
+!uploads/.gitkeep
+
+# IDEs & Text Editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.project
+.classpath
+.settings/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini

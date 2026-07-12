@@ -52,33 +52,41 @@
 }
 
 [data-theme="light"] {
-  /* Page bg — noticeably coloured so panels stand out */
-  --bg-base:       #e2e9f5;
+  /* ── Clean white + slate page — matches reference design ── */
+  --bg-base:       #f0f2f7;
   --bg-panel:      #ffffff;
-  --bg-panel-alt:  #f7f9ff;
+  --bg-panel-alt:  #f8f9fc;
   --bg-input:      #ffffff;
-  --bg-card:       #f1f5fd;
-  --bg-nav:        rgba(255, 255, 255, 0.97);
+  --bg-card:       #f4f6fb;
+  --bg-nav:        #1a2738;
 
-  /* Borders — darker so they're actually visible */
-  --border-base:   rgba(148, 163, 184, 0.85);
-  --border-panel:  rgba(148, 163, 184, 0.60);
+  /* Borders — crisp and subtle */
+  --border-base:   rgba(203, 213, 225, 0.90);
+  --border-panel:  rgba(203, 213, 225, 0.70);
 
-  /* Text — proper dark-on-light contrast */
+  /* Text — deep navy-slate for readability */
   --text-primary:  #0f172a;
   --text-secondary:#1e293b;
-  --text-muted:    #475569;
-  --text-label:    #64748b;
+  --text-muted:    #64748b;
+  --text-label:    #94a3b8;
 
-  /* Shadows — more visible for depth on white panels */
-  --shadow-panel:  0 4px 28px -4px rgba(0,0,0,0.14), 0 2px 8px -2px rgba(0,0,0,0.08);
-  --scrollbar-bg:  #d4dcea;
-  --scrollbar-thumb: #94a3b8;
-  --scrollbar-hover: #64748b;
+  /* Shadows — clean card elevation */
+  --shadow-panel:  0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06);
+  --scrollbar-bg:  #e8eaf0;
+  --scrollbar-thumb: #cbd5e1;
+  --scrollbar-hover: #94a3b8;
 
-  --bg-gradient-1: rgba(150, 175, 230, 0.30);
-  --bg-gradient-2: rgba(180, 165, 225, 0.22);
-  --bg-gradient-3: rgba(190, 205, 240, 0.35);
+  /* No colourful gradients — clean flat white background */
+  --bg-gradient-1: transparent;
+  --bg-gradient-2: transparent;
+  --bg-gradient-3: transparent;
+
+  /* Navy sidebar palette */
+  --nav-bg:        #1a2738;
+  --nav-hover:     #243447;
+  --nav-active:    #1d6fa8;
+  --nav-text:      #8da3b8;
+  --nav-text-active: #ffffff;
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -128,8 +136,8 @@ body {
 [data-theme="light"] .glass-panel {
   background: #ffffff !important;
   background-image: none !important;
-  border-color: rgba(148, 163, 184, 0.60) !important;
-  box-shadow: 0 4px 28px -4px rgba(0,0,0,0.12), 0 1px 6px rgba(0,0,0,0.06) !important;
+  border-color: rgba(203, 213, 225, 0.65) !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04) !important;
 }
 
 .glass-panel-hover {
@@ -176,56 +184,58 @@ body {
 /* ═══════════════════════════════════════════════════════════
    Theme-aware text helpers (override Tailwind slate-*)
 ═══════════════════════════════════════════════════════════ */
+/* ── Light mode: Tailwind dark class overrides ──────────────────────────── */
+
 [data-theme="light"] .text-slate-200 { color: #0f172a !important; }
 [data-theme="light"] .text-slate-300 { color: #1e293b !important; }
 [data-theme="light"] .text-slate-350 { color: #334155 !important; }
-[data-theme="light"] .text-slate-400 { color: #475569 !important; }
-[data-theme="light"] .text-slate-500 { color: #64748b !important; }
-[data-theme="light"] .text-slate-600 { color: #475569 !important; }
+[data-theme="light"] .text-slate-400 { color: #64748b !important; }
+[data-theme="light"] .text-slate-500 { color: #94a3b8 !important; }
+[data-theme="light"] .text-slate-600 { color: #64748b !important; }
 [data-theme="light"] .text-white     { color: #0f172a !important; }
 
-/* Dark bg classes — remapped to soft blue-tinted light backgrounds */
+/* Dark bg classes — remapped to clean off-white backgrounds */
 [data-theme="light"] .bg-slate-950,
 [data-theme="light"] .bg-slate-950\/60,
 [data-theme="light"] .bg-slate-950\/80 {
-  background-color: #f1f5fd !important;
+  background-color: #f4f6fb !important;
 }
 [data-theme="light"] .bg-slate-900,
 [data-theme="light"] .bg-slate-900\/10,
 [data-theme="light"] .bg-slate-900\/20,
 [data-theme="light"] .bg-slate-900\/60,
 [data-theme="light"] .bg-slate-900\/85 {
-  background-color: rgba(215, 224, 240, 0.65) !important;
+  background-color: rgba(226, 232, 240, 0.60) !important;
 }
 
-/* Field wrapper cards inside panels — subtle blue tint so they contrast the white panel */
+/* Panel sub-cards — very subtle tint against white panel */
 [data-theme="light"] .bg-white\/70,
 [data-theme="light"] .bg-white\/80,
 [data-theme="light"] .bg-white\/85,
 [data-theme="light"] .bg-white\/90 {
-  background-color: #f4f7ff !important;
-  border-color: rgba(148, 163, 184, 0.50) !important;
+  background-color: #f8fafd !important;
+  border-color: rgba(203, 213, 225, 0.55) !important;
 }
 
 [data-theme="light"] .border-slate-800,
 [data-theme="light"] .border-slate-800\/80,
 [data-theme="light"] .border-slate-850,
 [data-theme="light"] .border-slate-900 {
-  border-color: rgba(148, 163, 184, 0.55) !important;
+  border-color: rgba(203, 213, 225, 0.65) !important;
 }
 
-/* Field cards in light mode — tinted so they contrast the white panel */
+/* Field cards in light mode */
 [data-theme="light"] .bg-slate-50 {
-  background-color: #f1f5fd !important;
+  background-color: #f8fafd !important;
 }
 [data-theme="light"] .bg-slate-100 {
-  background-color: #e8edf9 !important;
+  background-color: #eef1f7 !important;
 }
 
-/* Navbar light */
+/* Navbar — dark navy in light mode */
 [data-theme="light"] nav {
-  background-color: rgba(255, 255, 255, 0.97) !important;
-  border-bottom-color: rgba(148, 163, 184, 0.55) !important;
+  background-color: #1a2738 !important;
+  border-bottom-color: rgba(255,255,255,0.06) !important;
 }
 
 /* Input fields in light mode — pure white with visible border */
@@ -233,14 +243,14 @@ body {
 [data-theme="light"] select,
 [data-theme="light"] textarea {
   background-color: #ffffff !important;
-  border-color: rgba(100, 116, 139, 0.55) !important;
+  border-color: rgba(203, 213, 225, 0.80) !important;
   color: #0f172a !important;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
 }
 [data-theme="light"] input:focus,
 [data-theme="light"] select:focus {
-  border-color: rgba(76, 108, 179, 0.70) !important;
-  box-shadow: 0 0 0 3px rgba(76, 108, 179, 0.15) !important;
+  border-color: rgba(29, 111, 168, 0.70) !important;
+  box-shadow: 0 0 0 3px rgba(29, 111, 168, 0.12) !important;
 }
 
 /* ═══════════════════════════════════════════════════════════

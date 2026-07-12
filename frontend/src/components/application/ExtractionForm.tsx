@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Application } from '../../types';
 import {
@@ -23,6 +23,10 @@ import {
   Clock,
   UserCheck,
   Building2,
+  Sparkles,
+  FileSearch,
+  ChevronDown,
+  ChevronUp,
 } from 'lucide-react';
 import { useThemeStore } from '../../stores/themeStore';
 
@@ -41,23 +45,23 @@ const FIELD_CONFIG: Record<
   string,
   { icon: React.ElementType; type: 'text' | 'select' | 'date' | 'number'; options?: string[] }
 > = {
-  name:                   { icon: User,       type: 'text' },
-  dob:                    { icon: Calendar,   type: 'date' },
-  gender:                 { icon: UserCheck,  type: 'select', options: ['Male', 'Female', 'Other', 'Prefer not to say'] },
-  pan_number:             { icon: CreditCard, type: 'text' },
-  phone:                  { icon: Phone,      type: 'text' },
-  email:                  { icon: Mail,       type: 'text' },
-  address:                { icon: MapPin,     type: 'text' },
-  tobacco_use:            { icon: Cigarette,  type: 'select', options: ['No', 'Yes', 'Former', 'Never'] },
-  pre_existing_conditions:{ icon: HeartPulse, type: 'text' },
-  alcohol_consumption:    { icon: Wine,       type: 'select', options: ['None', 'Occasional', 'Moderate', 'Social', 'Heavy'] },
-  family_history:         { icon: Users,      type: 'text' },
-  profession:             { icon: Briefcase,  type: 'text' },
-  annual_income:          { icon: IndianRupee,type: 'number' },
-  coverage_amount:        { icon: Shield,     type: 'number' },
-  policy_term:            { icon: Clock,      type: 'text' },
-  nominee:                { icon: UserCheck,  type: 'text' },
-  employment_type:        { icon: Building2,  type: 'select', options: ['Employed', 'Self-Employed', 'Retired', 'Unemployed', 'Student'] },
+  name:                    { icon: User,        type: 'text' },
+  dob:                     { icon: Calendar,    type: 'date' },
+  gender:                  { icon: UserCheck,   type: 'select', options: ['Male', 'Female', 'Other', 'Prefer not to say'] },
+  pan_number:              { icon: CreditCard,  type: 'text' },
+  phone:                   { icon: Phone,       type: 'text' },
+  email:                   { icon: Mail,        type: 'text' },
+  address:                 { icon: MapPin,      type: 'text' },
+  tobacco_use:             { icon: Cigarette,   type: 'select', options: ['No', 'Yes', 'Former', 'Never'] },
+  pre_existing_conditions: { icon: HeartPulse,  type: 'text' },
+  alcohol_consumption:     { icon: Wine,        type: 'select', options: ['None', 'Occasional', 'Moderate', 'Social', 'Heavy'] },
+  family_history:          { icon: Users,       type: 'text' },
+  profession:              { icon: Briefcase,   type: 'text' },
+  annual_income:           { icon: IndianRupee, type: 'number' },
+  coverage_amount:         { icon: Shield,      type: 'number' },
+  policy_term:             { icon: Clock,       type: 'text' },
+  nominee:                 { icon: UserCheck,   type: 'text' },
+  employment_type:         { icon: Building2,   type: 'select', options: ['Employed', 'Self-Employed', 'Retired', 'Unemployed', 'Student'] },
 };
 
 // Layout groups — pairs shown side-by-side on md+
@@ -86,6 +90,7 @@ export const ExtractionForm: React.FC<ExtractionFormProps> = ({
 }) => {
   const { theme } = useThemeStore();
   const isLight = theme === 'light';
+  const [bannerExpanded, setBannerExpanded] = useState(true);
 
   // ── Form setup ─────────────────────────────────────────────────────────────
   const { register, handleSubmit, reset } = useForm({
@@ -123,60 +128,64 @@ export const ExtractionForm: React.FC<ExtractionFormProps> = ({
     0
   );
 
+  // ── AI extraction summary stats ────────────────────────────────────────────
+  const totalFields = Object.keys(application.extracted_data).length;
+  const filledFields = Object.values(application.extracted_data).filter(f => f.value && f.value.trim() !== '').length;
+  const missingFields = totalFields - filledFields;
+  const totalFlags = Object.values(application.extracted_data).reduce(
+    (acc, field) => acc + (field.flags?.length ?? 0), 0
+  );
+  const highFlags  = Object.values(application.extracted_data).reduce(
+    (acc, field) => acc + (field.flags?.filter(f => f.severity === 'high').length ?? 0), 0
+  );
+
   // ── Severity styles ────────────────────────────────────────────────────────
   const getSeverityStyles = (severity: string) => {
     switch (severity.toLowerCase()) {
       case 'high':
         return {
-          badge:    isLight
-            ? 'bg-red-50 text-red-700 border-red-300'
-            : 'bg-red-500/10 text-red-400 border-red-500/20',
-          text:     'text-red-500',
-          border:   isLight
-            ? 'border-red-300 focus:ring-red-400/30 focus:border-red-400'
-            : 'border-red-500/30 focus:ring-red-500/30 focus:border-red-500/50',
-          wrapBg:   isLight ? 'bg-red-50 border-red-200' : 'bg-red-500/5 border-red-500/15',
-          msgBg:    isLight ? 'bg-red-50 border-red-200' : 'bg-slate-950/80 border-slate-900',
-          msgText:  isLight ? 'text-red-700' : 'text-slate-300',
+          badge:   isLight ? 'bg-red-50 text-red-700 border-red-300' : 'bg-red-500/10 text-red-400 border-red-500/20',
+          text:    'text-red-500',
+          border:  isLight ? 'border-red-300 focus:ring-red-400/30 focus:border-red-400' : 'border-red-500/30 focus:ring-red-500/30 focus:border-red-500/50',
+          wrapBg:  isLight ? 'bg-red-50 border-red-200' : 'bg-red-500/5 border-red-500/15',
+          msgBg:   isLight ? 'bg-red-50 border-red-200' : 'bg-slate-950/80 border-slate-900',
+          msgText: isLight ? 'text-red-700' : 'text-slate-300',
         };
       case 'medium':
         return {
-          badge:    isLight
-            ? 'bg-amber-50 text-amber-700 border-amber-300'
-            : 'bg-amber-500/10 text-amber-400 border-amber-500/20',
-          text:     'text-amber-600',
-          border:   isLight
-            ? 'border-amber-300 focus:ring-amber-400/30 focus:border-amber-400'
-            : 'border-amber-500/30 focus:ring-amber-500/30 focus:border-amber-500/50',
-          wrapBg:   isLight ? 'bg-amber-50/60 border-amber-200' : 'bg-amber-500/5 border-amber-500/15',
-          msgBg:    isLight ? 'bg-amber-50 border-amber-200' : 'bg-slate-950/80 border-slate-900',
-          msgText:  isLight ? 'text-amber-800' : 'text-slate-300',
+          badge:   isLight ? 'bg-amber-50 text-amber-700 border-amber-300' : 'bg-amber-500/10 text-amber-400 border-amber-500/20',
+          text:    'text-amber-600',
+          border:  isLight ? 'border-amber-300 focus:ring-amber-400/30 focus:border-amber-400' : 'border-amber-500/30 focus:ring-amber-500/30 focus:border-amber-500/50',
+          wrapBg:  isLight ? 'bg-amber-50/60 border-amber-200' : 'bg-amber-500/5 border-amber-500/15',
+          msgBg:   isLight ? 'bg-amber-50 border-amber-200' : 'bg-slate-950/80 border-slate-900',
+          msgText: isLight ? 'text-amber-800' : 'text-slate-300',
         };
       case 'low':
         return {
-          badge:    isLight
-            ? 'bg-blue-50 text-blue-600 border-blue-200'
-            : 'bg-blue-500/10 text-blue-400 border-blue-500/20',
-          text:     'text-blue-500',
-          border:   isLight
-            ? 'border-blue-300 focus:ring-blue-400/30 focus:border-blue-400'
-            : 'border-blue-500/30 focus:ring-blue-500/30 focus:border-blue-500/50',
-          wrapBg:   isLight ? 'bg-blue-50/40 border-blue-200/70' : 'bg-blue-500/5 border-blue-500/15',
-          msgBg:    isLight ? 'bg-blue-50 border-blue-200' : 'bg-slate-950/80 border-slate-900',
-          msgText:  isLight ? 'text-blue-700' : 'text-slate-300',
+          badge:   isLight ? 'bg-blue-50 text-blue-600 border-blue-200' : 'bg-blue-500/10 text-blue-400 border-blue-500/20',
+          text:    'text-blue-500',
+          border:  isLight ? 'border-blue-300 focus:ring-blue-400/30 focus:border-blue-400' : 'border-blue-500/30 focus:ring-blue-500/30 focus:border-blue-500/50',
+          wrapBg:  isLight ? 'bg-blue-50/40 border-blue-200/70' : 'bg-blue-500/5 border-blue-500/15',
+          msgBg:   isLight ? 'bg-blue-50 border-blue-200' : 'bg-slate-950/80 border-slate-900',
+          msgText: isLight ? 'text-blue-700' : 'text-slate-300',
         };
       default:
         return {
-          badge:    isLight ? 'bg-slate-100 text-slate-600 border-slate-300' : 'bg-slate-800 text-slate-400 border-slate-700',
-          text:     isLight ? 'text-slate-600' : 'text-slate-400',
-          border:   isLight
-            ? 'border-slate-300 focus:ring-brand-400/30 focus:border-brand-400'
-            : 'border-slate-800 focus:ring-brand-500/50 focus:border-brand-500/50',
-          wrapBg:   isLight ? 'bg-slate-50 border-slate-200' : 'bg-slate-900/20 border-slate-900',
-          msgBg:    isLight ? 'bg-slate-100 border-slate-200' : 'bg-slate-950/80 border-slate-900',
-          msgText:  isLight ? 'text-slate-700' : 'text-slate-300',
+          badge:   isLight ? 'bg-slate-100 text-slate-600 border-slate-300' : 'bg-slate-800 text-slate-400 border-slate-700',
+          text:    isLight ? 'text-slate-600' : 'text-slate-400',
+          border:  isLight ? 'border-slate-300 focus:ring-brand-400/30 focus:border-brand-400' : 'border-slate-800 focus:ring-brand-500/50 focus:border-brand-500/50',
+          wrapBg:  isLight ? 'bg-slate-50 border-slate-200' : 'bg-slate-900/20 border-slate-900',
+          msgBg:   isLight ? 'bg-slate-100 border-slate-200' : 'bg-slate-950/80 border-slate-900',
+          msgText: isLight ? 'text-slate-700' : 'text-slate-300',
         };
     }
+  };
+
+  // "Not found" style — field was empty after extraction
+  const missingFieldStyles = {
+    wrapBg: isLight ? 'bg-amber-50/40 border-amber-200/60 border-dashed' : 'bg-amber-500/3 border-amber-500/20 border-dashed',
+    badge:  isLight ? 'bg-amber-50 text-amber-600 border-amber-300' : 'bg-amber-500/10 text-amber-400 border-amber-500/20',
+    text:   isLight ? 'text-amber-500' : 'text-amber-400',
   };
 
   // ── Render single field ────────────────────────────────────────────────────
@@ -184,30 +193,42 @@ export const ExtractionForm: React.FC<ExtractionFormProps> = ({
     const fieldData = application.extracted_data[key];
     if (!fieldData) return null;
 
-    const config    = FIELD_CONFIG[key];
-    const FieldIcon = config?.icon ?? User;
-    const inputType = config?.type ?? 'text';
-    const options   = config?.options;
+    const config     = FIELD_CONFIG[key];
+    const FieldIcon  = config?.icon ?? User;
+    const inputType  = config?.type ?? 'text';
+    const options    = config?.options;
 
-    const hasFlags  = fieldData.flags && fieldData.flags.filter(f => f.blocking).length > 0;
-    const activeFlag = hasFlags ? fieldData.flags.find(f => f.blocking) : null;
-    const styles    = getSeverityStyles(activeFlag?.severity || '');
+    const isValueEmpty = !fieldData.value || fieldData.value.trim() === '';
+    const hasFlags     = fieldData.flags && fieldData.flags.filter(f => f.blocking).length > 0;
+    const activeFlag   = hasFlags ? fieldData.flags.find(f => f.blocking) : null;
+    const styles       = getSeverityStyles(activeFlag?.severity || '');
+
+    // Wrap background — missing field takes priority over neutral, but flag styling takes priority over all
+    const wrapBg = hasFlags
+      ? styles.wrapBg
+      : isValueEmpty
+        ? missingFieldStyles.wrapBg
+        : (isLight ? 'bg-slate-50 border-slate-200' : 'bg-slate-900/20 border-slate-900');
 
     const inputClass = `
       w-full pl-9 pr-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-150
       ${isLight
         ? 'bg-white text-slate-800 placeholder-slate-400'
         : 'bg-slate-950 text-slate-200 placeholder-slate-600'}
-      border ${hasFlags ? styles.border : isLight
-        ? 'border-slate-300 focus:border-brand-500/70 focus:ring-brand-400/20'
-        : 'border-slate-800/80 focus:border-brand-500/50 focus:ring-brand-500/50'}
+      border ${
+        hasFlags
+          ? styles.border
+          : isLight
+            ? 'border-slate-300 focus:border-brand-500/70 focus:ring-brand-400/20'
+            : 'border-slate-800/80 focus:border-brand-500/50 focus:ring-brand-500/50'
+      }
       focus:outline-none focus:ring-2
     `;
 
     return (
       <div
         key={key}
-        className={`p-4 rounded-xl border transition-all duration-200 ${styles.wrapBg}`}
+        className={`p-4 rounded-xl border transition-all duration-200 ${wrapBg}`}
       >
         {/* Label row */}
         <div className="flex items-center justify-between mb-2">
@@ -219,21 +240,23 @@ export const ExtractionForm: React.FC<ExtractionFormProps> = ({
             {fieldData.label}
           </label>
 
+          {/* Badge: flag severity > missing > verified */}
           {hasFlags && activeFlag ? (
-            <span
-              className={`text-[10px] font-bold px-2 py-0.5 rounded-full border tracking-wide uppercase flex items-center gap-1 ${styles.badge}`}
-            >
+            <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border tracking-wide uppercase flex items-center gap-1 ${styles.badge}`}>
               <AlertTriangle className="h-3 w-3" />
               {activeFlag.severity}
             </span>
+          ) : isValueEmpty ? (
+            <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border tracking-wide uppercase flex items-center gap-1 ${missingFieldStyles.badge}`}>
+              <FileSearch className="h-3 w-3" />
+              Not Found
+            </span>
           ) : (
-            <span
-              className={`text-[10px] font-bold px-2 py-0.5 rounded-full border flex items-center gap-1 uppercase tracking-wide ${
-                isLight
-                  ? 'bg-emerald-50 text-emerald-600 border-emerald-200'
-                  : 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
-              }`}
-            >
+            <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border flex items-center gap-1 uppercase tracking-wide ${
+              isLight
+                ? 'bg-emerald-50 text-emerald-600 border-emerald-200'
+                : 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
+            }`}>
               <ShieldCheck className="h-3 w-3" />
               Verified
             </span>
@@ -246,12 +269,16 @@ export const ExtractionForm: React.FC<ExtractionFormProps> = ({
             className={`absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 pointer-events-none ${
               hasFlags
                 ? styles.text
-                : isLight ? 'text-slate-400' : 'text-slate-600'
+                : isValueEmpty
+                  ? missingFieldStyles.text
+                  : isLight ? 'text-slate-400' : 'text-slate-600'
             }`}
           />
 
           {inputType === 'select' && options ? (
             <select {...register(`${key}.value`)} className={inputClass}>
+              {/* Add blank option for empty/not-found fields */}
+              {isValueEmpty && <option value="">— Not found in document —</option>}
               {options.map((opt) => (
                 <option key={opt} value={opt}>
                   {opt}
@@ -262,6 +289,7 @@ export const ExtractionForm: React.FC<ExtractionFormProps> = ({
             <input
               type={inputType === 'number' ? 'text' : inputType}
               inputMode={inputType === 'number' ? 'decimal' : undefined}
+              placeholder={isValueEmpty ? 'Not found in document — enter manually' : undefined}
               {...register(`${key}.value`)}
               className={inputClass}
             />
@@ -270,17 +298,9 @@ export const ExtractionForm: React.FC<ExtractionFormProps> = ({
           {/* Original value drift hint */}
           {String(fieldData.value).trim().toLowerCase() !==
             String(fieldData.original_value).trim().toLowerCase() && (
-            <div
-              className={`mt-1 text-[10px] flex items-center gap-1.5 px-1 ${
-                isLight ? 'text-slate-400' : 'text-slate-500'
-              }`}
-            >
+            <div className={`mt-1 text-[10px] flex items-center gap-1.5 px-1 ${isLight ? 'text-slate-400' : 'text-slate-500'}`}>
               <span>Original extraction:</span>
-              <span
-                className={`font-semibold italic ${
-                  isLight ? 'text-slate-500' : 'text-slate-400'
-                }`}
-              >
+              <span className={`font-semibold italic ${isLight ? 'text-slate-500' : 'text-slate-400'}`}>
                 {fieldData.original_value || 'None'}
               </span>
             </div>
@@ -289,11 +309,21 @@ export const ExtractionForm: React.FC<ExtractionFormProps> = ({
 
         {/* Flag message */}
         {hasFlags && activeFlag && (
-          <div
-            className={`mt-2.5 flex items-start gap-2 text-xs rounded-lg p-2.5 border ${styles.msgBg}`}
-          >
+          <div className={`mt-2.5 flex items-start gap-2 text-xs rounded-lg p-2.5 border ${styles.msgBg}`}>
             <AlertTriangle className={`h-3.5 w-3.5 shrink-0 mt-0.5 ${styles.text}`} />
             <span className={styles.msgText}>{activeFlag.message}</span>
+          </div>
+        )}
+
+        {/* "Not found" helper hint */}
+        {isValueEmpty && !hasFlags && (
+          <div className={`mt-2.5 flex items-start gap-2 text-xs rounded-lg p-2.5 border ${
+            isLight ? 'bg-amber-50/80 border-amber-200' : 'bg-amber-500/5 border-amber-500/20'
+          }`}>
+            <FileSearch className={`h-3.5 w-3.5 shrink-0 mt-0.5 ${isLight ? 'text-amber-500' : 'text-amber-400'}`} />
+            <span className={isLight ? 'text-amber-700' : 'text-amber-300/80'}>
+              This field was not found in your document. You may enter it manually if applicable.
+            </span>
           </div>
         )}
       </div>
@@ -318,9 +348,106 @@ export const ExtractionForm: React.FC<ExtractionFormProps> = ({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+
+      {/* ── AI Extraction Result Banner ──────────────────────────────────── */}
+      <div className={`rounded-xl border overflow-hidden transition-all duration-300 ${
+        isLight
+          ? 'bg-gradient-to-r from-violet-50 to-indigo-50 border-violet-200'
+          : 'bg-gradient-to-r from-violet-950/30 to-indigo-950/30 border-violet-500/20'
+      }`}>
+        {/* Banner header — always visible */}
+        <button
+          type="button"
+          onClick={() => setBannerExpanded(prev => !prev)}
+          className={`w-full flex items-center justify-between px-4 py-3 text-left transition-colors ${
+            isLight ? 'hover:bg-violet-50/80' : 'hover:bg-violet-500/5'
+          }`}
+        >
+          <div className="flex items-center gap-2.5">
+            <div className={`p-1.5 rounded-lg ${isLight ? 'bg-violet-100 text-violet-600' : 'bg-violet-500/20 text-violet-400'}`}>
+              <Sparkles className="h-4 w-4" />
+            </div>
+            <div>
+              <p className={`text-sm font-semibold ${isLight ? 'text-violet-800' : 'text-violet-300'}`}>
+                AI Extraction Complete
+              </p>
+              <p className={`text-[11px] ${isLight ? 'text-violet-600' : 'text-violet-400/80'}`}>
+                {filledFields} of {totalFields} fields auto-filled from your document
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            {/* Quick stats chips */}
+            <div className="hidden sm:flex items-center gap-2">
+              <span className={`inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full border ${
+                isLight ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
+              }`}>
+                <ShieldCheck className="h-3 w-3" />
+                {filledFields} found
+              </span>
+              {missingFields > 0 && (
+                <span className={`inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full border ${
+                  isLight ? 'bg-amber-50 text-amber-700 border-amber-200' : 'bg-amber-500/10 text-amber-400 border-amber-500/20'
+                }`}>
+                  <FileSearch className="h-3 w-3" />
+                  {missingFields} missing
+                </span>
+              )}
+              {totalFlags > 0 && (
+                <span className={`inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full border ${
+                  highFlags > 0
+                    ? isLight ? 'bg-red-50 text-red-700 border-red-200' : 'bg-red-500/10 text-red-400 border-red-500/20'
+                    : isLight ? 'bg-amber-50 text-amber-700 border-amber-200' : 'bg-amber-500/10 text-amber-400 border-amber-500/20'
+                }`}>
+                  <AlertTriangle className="h-3 w-3" />
+                  {totalFlags} flag{totalFlags !== 1 ? 's' : ''}
+                </span>
+              )}
+            </div>
+            {bannerExpanded ? (
+              <ChevronUp className={`h-4 w-4 ${isLight ? 'text-violet-500' : 'text-violet-400'}`} />
+            ) : (
+              <ChevronDown className={`h-4 w-4 ${isLight ? 'text-violet-500' : 'text-violet-400'}`} />
+            )}
+          </div>
+        </button>
+
+        {/* Expanded detail */}
+        {bannerExpanded && (
+          <div className={`px-4 pb-4 pt-0 border-t ${isLight ? 'border-violet-200/60' : 'border-violet-500/10'}`}>
+            <div className="pt-3 grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div className={`p-3 rounded-lg text-center border ${isLight ? 'bg-white/70 border-violet-100' : 'bg-slate-900/40 border-violet-500/10'}`}>
+                <p className={`text-xl font-bold ${isLight ? 'text-violet-700' : 'text-violet-300'}`}>{filledFields}</p>
+                <p className={`text-[10px] uppercase tracking-wide mt-0.5 ${isLight ? 'text-violet-500' : 'text-violet-400/70'}`}>Fields Extracted</p>
+              </div>
+              <div className={`p-3 rounded-lg text-center border ${isLight ? 'bg-white/70 border-amber-100' : 'bg-slate-900/40 border-amber-500/10'}`}>
+                <p className={`text-xl font-bold ${isLight ? 'text-amber-600' : 'text-amber-400'}`}>{missingFields}</p>
+                <p className={`text-[10px] uppercase tracking-wide mt-0.5 ${isLight ? 'text-amber-500' : 'text-amber-400/70'}`}>Not Found</p>
+              </div>
+              <div className={`p-3 rounded-lg text-center border ${isLight ? 'bg-white/70 border-red-100' : 'bg-slate-900/40 border-red-500/10'}`}>
+                <p className={`text-xl font-bold ${isLight ? 'text-red-600' : 'text-red-400'}`}>{highFlags}</p>
+                <p className={`text-[10px] uppercase tracking-wide mt-0.5 ${isLight ? 'text-red-500' : 'text-red-400/70'}`}>High Flags</p>
+              </div>
+              <div className={`p-3 rounded-lg text-center border ${isLight ? 'bg-white/70 border-slate-200' : 'bg-slate-900/40 border-slate-700'}`}>
+                <p className={`text-xl font-bold ${isLight ? 'text-slate-700' : 'text-slate-300'}`}>{blockingFlagCount}</p>
+                <p className={`text-[10px] uppercase tracking-wide mt-0.5 ${isLight ? 'text-slate-500' : 'text-slate-400/70'}`}>Blocking</p>
+              </div>
+            </div>
+            <p className={`mt-3 text-[11px] leading-relaxed ${isLight ? 'text-violet-600' : 'text-violet-400/70'}`}>
+              {blockingFlagCount > 0
+                ? `⚠️ ${blockingFlagCount} blocking flag${blockingFlagCount !== 1 ? 's' : ''} must be resolved before submitting. Correct the highlighted fields below.`
+                : missingFields > 0
+                  ? `ℹ️ Some fields were not found in your document. You can enter them manually or leave optional ones blank.`
+                  : '✅ All fields extracted and validated. Review the form and submit when ready.'}
+            </p>
+          </div>
+        )}
+      </div>
+
+      {/* ── Field grid ───────────────────────────────────────────────────── */}
       {FIELD_LAYOUT.map((slot) => renderSlot(slot))}
 
-      {/* Actions */}
+      {/* ── Actions ──────────────────────────────────────────────────────── */}
       <div className={`pt-6 border-t ${divider} flex flex-col sm:flex-row justify-between items-center gap-4`}>
         {/* Delete */}
         <button
